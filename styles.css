@@ -162,7 +162,7 @@ cursor: pointer;
  #welcome-section {
   height: 100vh;
   min-height: 120vh;
-  padding-top: 35vh;
+  padding-top: 20vh;
   text-align: center;
   box-sizing: border-box;
   background-color: #05386b;
@@ -493,7 +493,7 @@ cursor: pointer;
      text-align:left;
    }
     #welcome-section {
-     padding-top: 20vh;
+     padding-top: 10vh;
    }
    #split-column {
     columns: 1;
