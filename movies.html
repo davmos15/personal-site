@@ -1,31 +1,20 @@
 <!DOCTYPE html> 
 <html lang="en">
 <head>
-  <head>
-    <title>Nadav Moskow | Nadav's Resume</title>
+    <title>Movie List | Nadav's Resume</title>
+    <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" type ="image/png" href="/NM1.png">
+    <link rel="shortcut icon" type="image/png" href="/NM1.png">
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
-  <meta charset="UTF-8" />
-  <title>Movie List | Nadav's Resume</title>
   <!-- noUiSlider CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.6.1/nouislider.min.css">
 </head>
   
 <body>
 
-  <div id="top" class="topnav"></div>
-
-<script>
-  fetch('nav.html')
-    .then(response => response.text())
-    .then(data => {
-      document.getElementById('top').innerHTML = data;
-    })
-    .catch(console.error);
-</script>
+  <div id="nav-placeholder"></div>
 
 <div id="movies" class="film">
   <h1>My Movie Watchlist 🎥</h1>
@@ -312,6 +301,7 @@
   </script>
 </div>
   <hr></hr>
+<script src="script.js" charset="utf-8"></script>
 </body>
   <footer>
     <p> Created by Nadav Moskow <a href="https://www.linkedin.com/in/nadav-moskow" target="_blank" id="linkedin-link"><img src="https://cdn.worldvectorlogo.com/logos/linkedin-icon-2.svg" id="linkedin"></a></p>

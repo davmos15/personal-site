@@ -29,8 +29,6 @@ body {
    margin-top: 15px;
  }
 
- h6 {
- }
  
  #logo {
    width: 46px;
@@ -127,10 +125,11 @@ body {
   display: none;
   position: absolute;
   top: 56.5px;
-  width: -webkit-fill-available;
+  min-width: 200px;
   background-color: #f1f1f1;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
+  right: 0;
 }
 
 .dropdown-content a:hover {
@@ -150,12 +149,12 @@ background-color: #05386b;
 cursor: pointer;
 }
 
-#dropitem {
-    width: inherit;
+.dropitem {
+    display: block;
     text-align: center;
-    padding: 0;
-    padding-top: 0.6rem;
-    padding-bottom: 0.6rem;
+    padding: 0.8rem 1rem;
+    text-decoration: none;
+    white-space: nowrap;
 }
  
  /*homepage*/
@@ -182,17 +181,346 @@ cursor: pointer;
  
  /*Resume Page*/
 .download-btn {
-  background-color: #05386B; /* set the button color */
-  color: #fff;               /* text color for contrast */
-  border: none;             /* remove default button border */
-  padding: 10px 20px;       /* some spacing */
-  cursor: pointer;          /* ensure pointer cursor on hover */
-  /* You can add other styling as needed */
+  background-color: #05386B;
+  color: #fff;
+  border: none;
+  padding: 12px 24px;
+  cursor: pointer;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  transition: background-color 0.2s ease, transform 0.1s ease;
 }
 
 .download-btn:hover {
   background-color: #052a4e;
-  cursor: pointer; 
+  transform: translateY(-1px);
+}
+
+.download-btn:active {
+  transform: translateY(0);
+}
+
+/* Tab Navigation */
+.tab-container {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin: 24px 0;
+  flex-wrap: wrap;
+}
+
+.tab-btn {
+  background-color: #f1f1f1;
+  color: #05386B;
+  border: 2px solid #05386B;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.tab-btn:hover {
+  background-color: #e0e0e0;
+}
+
+.tab-btn.active {
+  background-color: #05386B;
+  color: #fff;
+}
+
+.tab-btn:focus {
+  outline: 2px solid #05386B;
+  outline-offset: 2px;
+}
+
+.tab-panel {
+  display: none;
+  background-color: #fff;
+}
+
+.tab-panel.active {
+  display: block;
+  background-color: #fff;
+}
+
+/* Card Grid */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-top: 16px;
+}
+
+@media (max-width: 600px) {
+  .card-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Resume Cards */
+.resume-card {
+  background-color: #fff;
+  border: 2px solid #05386B;
+  border-radius: 12px;
+  padding: 20px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: center;
+}
+
+.resume-card:hover {
+  box-shadow: 0 4px 12px rgba(5, 56, 107, 0.15);
+  transform: translateY(-2px);
+}
+
+.resume-card:focus {
+  outline: 2px solid #05386B;
+  outline-offset: 2px;
+}
+
+.resume-card .card-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #05386B;
+  margin: 0 0 8px 0;
+}
+
+.resume-card .card-company {
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+  margin: 0 0 4px 0;
+}
+
+.resume-card .card-dates {
+  font-size: 13px;
+  color: #666;
+  margin: 0 0 12px 0;
+}
+
+.resume-card .card-summary {
+  font-size: 14px;
+  color: #444;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Skills Cards */
+.skill-card {
+  background-color: #fff;
+  border: 2px solid #05386B;
+  color: #05386B;
+  border-radius: 12px;
+  padding: 20px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: center;
+}
+
+.skill-card:hover {
+  box-shadow: 0 4px 12px rgba(5, 56, 107, 0.15);
+  transform: translateY(-2px);
+}
+
+.skill-card:focus {
+  outline: 2px solid #05386B;
+  outline-offset: 2px;
+}
+
+.skill-card .card-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #05386B;
+  margin: 0;
+}
+
+/* Education Cards - Not clickable */
+.education-card {
+  background-color: #fff;
+  border: 2px solid #05386B;
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+}
+
+.education-card .card-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #05386B;
+  margin: 0 0 8px 0;
+}
+
+.education-card .card-institution {
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+  margin: 0 0 4px 0;
+}
+
+.education-card .card-dates {
+  font-size: 13px;
+  color: #666;
+  margin: 0 0 8px 0;
+}
+
+.education-card .card-details {
+  font-size: 14px;
+  color: #444;
+  margin: 0;
+}
+
+/* Achievement Cards */
+.achievement-card {
+  background-color: #fff;
+  border: 2px solid #05386B;
+  border-radius: 12px;
+  padding: 20px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: center;
+}
+
+.achievement-card:hover {
+  box-shadow: 0 4px 12px rgba(5, 56, 107, 0.15);
+  transform: translateY(-2px);
+}
+
+.achievement-card:focus {
+  outline: 2px solid #05386B;
+  outline-offset: 2px;
+}
+
+.achievement-card .card-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #05386B;
+  margin: 0;
+}
+
+/* Modal Popup */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.modal-overlay.active {
+  display: flex;
+}
+
+.modal-content {
+  background-color: #fff;
+  border-radius: 16px;
+  max-width: 600px;
+  width: 100%;
+  max-height: 80vh;
+  overflow-y: auto;
+  padding: 24px;
+  position: relative;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+.modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #666;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background-color 0.2s ease;
+}
+
+.modal-close:hover {
+  background-color: #f1f1f1;
+}
+
+.modal-close:focus {
+  outline: 2px solid #05386B;
+}
+
+.modal-header {
+  margin-bottom: 16px;
+  padding-right: 40px;
+}
+
+.modal-header h2 {
+  font-size: 22px;
+  font-weight: 700;
+  color: #05386B;
+  margin: 0 0 8px 0;
+}
+
+.modal-header .modal-subtitle {
+  font-size: 16px;
+  color: #333;
+  margin: 0 0 4px 0;
+}
+
+.modal-header .modal-dates {
+  font-size: 14px;
+  color: #666;
+  margin: 0;
+}
+
+.modal-body {
+  text-align: left;
+}
+
+.modal-body h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: #05386B;
+  margin: 16px 0 8px 0;
+}
+
+.modal-body ul {
+  margin: 0 0 16px 0;
+  padding-left: 20px;
+}
+
+.modal-body li {
+  margin-bottom: 8px;
+  line-height: 1.5;
+}
+
+.modal-body a {
+  color: #05386B;
+}
+
+/* Skills Modal */
+.skill-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.skill-list li {
+  padding: 8px 0;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.skill-list li:last-child {
+  border-bottom: none;
 }
 
  #logos {
@@ -209,14 +537,16 @@ cursor: pointer;
   color: #05386B;
   padding-top: 56px;
   padding-bottom: 56px;
-  margin:auto;
-  max-width: 600px;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin: auto;
+  max-width: 900px;
  }
- 
+
  #resume-main {
   background-color: #fff;
   color: #05386B;
-  text-align: justify;
+  text-align: left;
   margin: auto;
  }
 
@@ -501,7 +831,7 @@ cursor: pointer;
     -moz-columns: 1;
   }
     /* This is a workaround to make the dropdown menu not show on mobile */
-    #dropitem {
+    .dropitem {
       display: none;
     }
   }

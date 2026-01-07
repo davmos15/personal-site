@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Resume – Nadav's Resume</title>
+    <title>Resume - Nadav's Resume</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" type ="image/png" href="/NM1.png">
     <link rel="stylesheet" href="styles.css">
@@ -11,299 +11,357 @@
 
 <body>
 
-<div id="top" class="topnav">
-
-<nav id="nav">
-  <ul id='navbar'>
-    <li><a href="https://nadavsresume.netlify.app/" id="logo-link"><img src="NM1.png" alt="Logo" id="logo"></a></li>
-    <li><a href="index">Home</a></li>
-    <li><div class="dropdown">
-      <button class="dropbtn"><a id="resumebutton" href="resume">My Resume</a></button>
-      <div class="dropdown-content">
-        <a id="dropitem" href="Resume.html#Experience">Experience</a>
-        <a id="dropitem" href="Resume.html#Skills">Skills & Tools</a>
-        <a id="dropitem" href="Resume.html#Courses">Courses & Acheivements</a>
-        <a id="dropitem" href="Resume.html#Education">Education</a>
-      </div>
-    </div></li>
-    <li><a href="projects">Projects</a></li>
-    <li><a href="about">About Me</a></li>
-    <li><a href="contact">Contact</a></li>
-  </ul>
-</nav>
-</div>
+<div id="nav-placeholder"></div>
 
 <div id="resume" class="work">
-  
+
   <h1>My Resume</h1>
 
-	<a href="/Nadav Moskow - Resume.pdf" target="_blank" download>
-  <button class="download-btn">
-    <i class="res.dload-btn"></i>
-    Download
-  </button>
-</a>
+  <a href="/Nadav Moskow - Resume.pdf" target="_blank" download>
+    <button class="download-btn" aria-label="Download resume as PDF">
+      Download My Resume
+    </button>
+  </a>
 
-  
+  <!-- Tab Navigation -->
+  <nav class="tab-container" role="tablist" aria-label="Resume sections">
+    <button class="tab-btn active" role="tab" aria-selected="true" aria-controls="experience-panel" id="experience-tab" data-tab="experience">
+      Experience
+    </button>
+    <button class="tab-btn" role="tab" aria-selected="false" aria-controls="skills-panel" id="skills-tab" data-tab="skills">
+      Skills
+    </button>
+    <button class="tab-btn" role="tab" aria-selected="false" aria-controls="education-panel" id="education-tab" data-tab="education">
+      Education
+    </button>
+    <button class="tab-btn" role="tab" aria-selected="false" aria-controls="achievements-panel" id="achievements-tab" data-tab="achievements">
+      Achievements
+    </button>
+  </nav>
 
-    <div id="resume-main">
-      <h1 id="Experience">Experience</h1>
+  <div id="resume-main">
 
-<button class="collapsible">Application Administrator</button>
-  <div class="content">
-    <h5>Foxit Software Inc.<br>October 2022 – Current</h5>
-      <ul>
-        <li>Responsibilities
-          <ul>
-            <li>Reporting to the CIO and working closely on a range of projects.</li>
-            <li>Manage and maintain key business applications like Oracle NetSuite, Freshdesk, KnowBe4, Bitwarden, and M365, ensuring optimal performance, security, and user accessibility.</li>
-            <li>Design, implement, and optimise business system workflows and processes, working in close collaboration with stakeholders for continuous improvement.</li>
-            <li>Manage system enhancement projects, ensuring their timely and cost-effective completion in alignment with business goals.</li>
-            <li>Document system updates and processes, develop user manuals, and improve the Knowledge Base by creating and updating articles.</li>
-            <li>Foster cross-functional collaboration with IT and operations departments, ensuring business systems alignment and resolving issues.</li>
-            <li>Provide technical support to users.</li>
-	    <li>Data Cleanup and optimisation</li>
-          </ul>
-        </li>
-        <li>Major Achievements
-          <ul>
-            <li>Brought control of external software under IT, Asana, Zoom</li>
-	    <li>Played a major role in two migration projects, Netsuite and Zendesk to Salesforce Service Cloud</li>
-            <li>Used Miro to document all current processes and possible improvements</li>
-            <li>Created multiple PowerApps:</li>
-              <ul>
-                <li>For new employees on day one at the company</li>
-                <li>Organisation chart with the ability to search and view individual users</li>
-              </ul>
-            <li>Ran interviews & selection processes for multiple IT/IS roles</li>
-          </ul>
-        </li>
-      </ul>
+    <!-- Experience Panel -->
+    <section id="experience-panel" class="tab-panel active" role="tabpanel" aria-labelledby="experience-tab">
+      <div class="card-grid">
+
+        <article class="resume-card" tabindex="0" role="button" aria-label="View Application Administrator details"
+          data-modal="modal-app-admin">
+          <h3 class="card-title">Application Administrator - Foxit Software Inc.</h3>
+          <p class="card-dates">October 2022 - Current</p>
+          <p class="card-summary">Managing internal workflows, automations, business applications and M365 in the GBITS department. Delivered $100k+ in annual savings through licence optimisation.</p>
+        </article>
+
+        <article class="resume-card" tabindex="0" role="button" aria-label="View IT/IS-Sec Program Manager details"
+          data-modal="modal-program-manager">
+          <h3 class="card-title">IT/IS-Sec Program Manager - Foxit Software Inc.</h3>
+          <p class="card-dates">June 2021 - September 2022</p>
+          <p class="card-summary">Reported directly to the CIO, implementing process automation and managing IT helpdesk operations for global staff.</p>
+        </article>
+
+        <article class="resume-card" tabindex="0" role="button" aria-label="View Digital Marketing Manager SEM details"
+          data-modal="modal-digital-autopilot">
+          <h3 class="card-title">Digital Marketing Manager (SEM & Data Analytics) - Digital Autopilot</h3>
+          <p class="card-dates">July 2019 - May 2021</p>
+          <p class="card-summary">Account manager and Google Ads expert. Increased client leads from 30 to 200+ per month using strategic ad campaigns.</p>
+        </article>
+
+        <article class="resume-card" tabindex="0" role="button" aria-label="View Digital Marketing Manager details"
+          data-modal="modal-digital-advocates">
+          <h3 class="card-title">Digital Marketing Manager - Digital Advocates Group</h3>
+          <p class="card-dates">March 2017 - June 2019</p>
+          <p class="card-summary">Managed client accounts, implemented campaign optimisations, and trained team members in Google Ads best practices.</p>
+        </article>
+
       </div>
+    </section>
 
-<button class="collapsible">GBITS-Sec Program Manager</button>
-<div class="content">
-  <h5>Foxit Software Inc.<br>June 2021 – September 2022</h5>
-	<ul>
-  <li>Responsibilities
-    <ul>
-      <li>Reporting to the CIO</li>
-      <li>Process automation and improvement through the use of Power Automation</li>
-	    <ul>
-		    <li>Global onboarding, offboarding & external data data deletion requests</li>
-	    </ul>
-      <li>Privacy Inbox (data deletion) request monitoring & actioning</li>
-      <li>Managing the internal IT helpdesk (Freshdesk) and knowledge base including writing articles, creating videos, assigning tickets and generally staying on top of things and improving usage</li>
-      <li>Training in & starting to role out Microsoft Endpoint (Intune) with the goal of being the global endpoint team lead</li>
-      <li>Writing and publishing global policies</li>
-    </ul>
-  </li>
-  <li>Major Achievements
-    <ul>
-      <li>Utilisied Power Automate & Freshdesk (amongst other tools) to automate multiple processes including both onboarding & offboarding for all new staff</li>
-      <li>Created the companies first proper org chart, utilising Visio and data from Azure AD</li>
-    </ul>
-  </li>
-</ul>
-</div>
+    <!-- Skills Panel -->
+    <section id="skills-panel" class="tab-panel" role="tabpanel" aria-labelledby="skills-tab">
+      <div class="card-grid">
 
+        <article class="skill-card" tabindex="0" role="button" aria-label="View Microsoft skills"
+          data-modal="modal-skill-microsoft">
+          <h3 class="card-title">Microsoft</h3>
+        </article>
 
-<button class="collapsible">
-	Digital Marketing Manager (SEM & Data Analytics)
-</button>
-<div class="content">
-  <h5>Digital Autopilot<br>July 2019 – May 2021</h5>
-	<ul>
-  <li>Responsibilities
-    <ul>
-      <li>Taking new clients through onboarding and then onto campaign creation</li>
-      <li>Managing clients’ Google accounts & implementing new techniques to improve results
-for client accounts</li>
-      <li>Engaging with clients, running meetings and presenting to clients</li>
-      <li>Creating, designing and analysing client reports, mostly using Google Data Studio,
-however, we also utilised PowerBI, AgencyAnalytics as well as others</li>
-      <li> Directly managed one staff member & indirectly another to assist them with their daily
-Google Ads tasks & SEO tasks respectively</li>
-    </ul>
-  </li>
-  <li>Major Achievements
-    <ul>
-      <li> Increased a repairs business from roughly 30 leads a month to over 200 using a suburb
-based ads strategy</li>
-      <li>Doubled a beauty & wellness spas’ leads & Revenue - <a href="https://www.youtube.com/watch?v=JYWm-9sUi_U" target="_blank">watch here</a></li>
-    </ul>
-  </li>
-</ul>
+        <article class="skill-card" tabindex="0" role="button" aria-label="View AI and Automation skills"
+          data-modal="modal-skill-ai">
+          <h3 class="card-title">AI & Automation</h3>
+        </article>
+
+        <article class="skill-card" tabindex="0" role="button" aria-label="View Data Analysis skills"
+          data-modal="modal-skill-data">
+          <h3 class="card-title">Data Analysis</h3>
+        </article>
+
+        <article class="skill-card" tabindex="0" role="button" aria-label="View ERP Systems skills"
+          data-modal="modal-skill-erp">
+          <h3 class="card-title">ERP Systems</h3>
+        </article>
+
+        <article class="skill-card" tabindex="0" role="button" aria-label="View Development and Web skills"
+          data-modal="modal-skill-dev">
+          <h3 class="card-title">Development & Web</h3>
+        </article>
+
+        <article class="skill-card" tabindex="0" role="button" aria-label="View Project Management skills"
+          data-modal="modal-skill-pm">
+          <h3 class="card-title">Project Management</h3>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- Education Panel -->
+    <section id="education-panel" class="tab-panel" role="tabpanel" aria-labelledby="education-tab">
+      <div class="card-grid">
+
+        <article class="education-card">
+          <h3 class="card-title">Bachelor of Commerce</h3>
+          <p class="card-institution">Deakin University</p>
+          <p class="card-dates">2015 - 2019</p>
+          <p class="card-details">Major: Economics</p>
+        </article>
+
+        <article class="education-card">
+          <h3 class="card-title">VCE</h3>
+          <p class="card-institution">Yeshivah College</p>
+          <p class="card-dates">2013</p>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- Achievements Panel -->
+    <section id="achievements-panel" class="tab-panel" role="tabpanel" aria-labelledby="achievements-tab">
+      <div class="card-grid">
+
+        <article class="achievement-card" tabindex="0" role="button" aria-label="View Resume Website details"
+          data-modal="modal-achieve-website">
+          <h3 class="card-title">Built This Personal Resume Website</h3>
+        </article>
+
+        <article class="achievement-card" tabindex="0" role="button" aria-label="View Web Solutions details"
+          data-modal="modal-achieve-claude">
+          <h3 class="card-title">Web Solutions Built with Claude</h3>
+        </article>
+
+        <article class="achievement-card" tabindex="0" role="button" aria-label="View Web Design Certificate details"
+          data-modal="modal-achieve-fcc">
+          <h3 class="card-title">Responsive Web Design Certificate</h3>
+        </article>
+
+        <article class="achievement-card" tabindex="0" role="button" aria-label="View Marathon details"
+          data-modal="modal-achieve-marathon">
+          <h3 class="card-title">Marathon Completion</h3>
+        </article>
+
+        <article class="achievement-card" tabindex="0" role="button" aria-label="View Cricket achievements"
+          data-modal="modal-achieve-cricket">
+          <h3 class="card-title">3 Cricket Grand Final Wins</h3>
+        </article>
+
+      </div>
+    </section>
+
   </div>
-  
-<button class="collapsible">
-	Digital Marketing Manager
-</button>
-<div class="content">
-	<h5>Digital Advocates Group<br>March 2017 – June 2019</h5>
-  <ul>
-  <li>Responsibilities
-    <ul>
-      <li>Managing clients’ accounts & making necessary changes</li>
-      <li>Engaging with clients & running meeting</li>
-      <li>Implementing new techniques to generate increased quality traffic for clients</li>
-      <li>Creating and analysing client reports</li>
-      <li>Trained & nurtured two staff members in Google Ads specialists</li>
-    </ul>
-  </li>
-  <li>Major Achievements
-    <ul>
-      <li>Created a semi-automated Google sheet (with Google scripts) to keep track of all
-changes made on any of our clients on any given day
-</li>
-      <li>Created (and wrote a blog about) every suburb in Melbourne by distance and direction
-        from the CBD - Check out <a href="https://www.digitalautopilot.com.au/blogs/the-ultimate-list-of-melbourne-suburbs" target="_blank">the blog</a>
-</li>
-    </ul>
-  </li>
-</ul>
 </div>
 
-<button class="collapsible">
-	Primary School Aid Worker
-	    </button>
-<div class="content">
-	<h5>Yeshivah College<br>January 2016 – December 2016</h5>
-<ul>
-	<li>Bi–weekly working in a primary school assisting in class working in conjunction with the teachers and more specifically helping those kids who require extra assistance</li>
-</ul>
-</div>
-
-
-<button class="collapsible">
-	Youth Volunteer</button>
-<div class="content">
-	<h5>Bnei Akiva Youth Movement<br>January 2015 – December 2016</h5>
- <ul>
-	<li>Weekly meetings to plan programs for kids on the weekend as well as camps in both summer & winter</li>
-    <li>Running weekly meetings for children of varying ages</li>
-    <li>Running programs on camps in both summer & winter</li>
-</ul>
-</div>
-
-<button class="collapsible">
-	File Clerk
-</button>
-<div class="content">
-	<h5>Goldman and Associates<br>March 2015 – December 2015</h5>
- <ul>
-	<li>Organising accounting files</li>
-  <li>Printing & assisting with other office tasks</li>
-  <li>Coordinating with accountants to achieve goals for clients</li>
-</ul>
-</div>
-
-<h1 id="Skills">Skills and Tools</h1>
-	<button class="collapsible">Microsoft Tech Stack</button>
-		<div class="content">	
-    			<ul>
-			      <li>Microsoft Copilot</li>
-			      <li>Power Automate, Azure AD, Admin Centre, Endpoint/Intune</li>
-			      <li>Sharepoint, OneDrive, Forms</li>
-			      <li>Office</li>
-		    	</ul>
-		</div>
-	 <button class="collapsible">ERP</button>
-		<div class="content">	
-    			<ul>
-			      <li>NetSuite</li>
-			</ul>
-		</div>
-	    <button class="collapsible">Google Suite</button>
-	    	<div class="content">	
-    <ul>
-      <li>Ads, Analytics, Tag Manager</li>
-      <li>Data Studio</li>
-      <li>GSuite, Sheets, Docs</li>
-    </ul>
-	    </div>
- 
-	    <button class="collapsible">Coding & Web Dev</button>
-    <div class="content">
-	  <ul>
-      <li>Powershell, HTML, CSS, R, JavaScript</li>
-      <li>WordPress, Shopify, Wix</li>
-    </ul>
-  </div>
-	    
-	    <button class="collapsible">Digital Marketing</button>
-	    	<div class="content">
-    <ul>
-      <li>Keyword Research, Report Creation, Data Analysis</li>
-      <li>Ad & Copywriting</li>
-	<li>SEO, Facebook Ads, Bing Ads, Email Marketing, Blogging</li>
-    </ul>
-  		</div>
-	    
-	    <button class="collapsible">Other Tools</button>
-    	<div class="content">
-	    <ul>
-      <li>Miro, ChatGPT, Monday.com, Asana</li>
-      <li>ClickFunnels, PPC Samurai, AgencyAnalytics, Optmyzr, Active Campaign</li>
-    </ul>
-  	</div>
-
-<h1 id="Courses">Courses, Qualifications & Achievements</h1>
-  
-	    <button class="collapsible">Google Ads Certification</button>
-	    	<div class="content">
-    <ul>
-      <li>Ads</li>
-      <li>Analytics</li>
-      <li>Data Studio</li>
-      <li>Tag Manager</li>
-    </ul>
-	    </div>
-	    
-    <button class="collapsible">Responsive Web Design (HTML & CSS) Course</a></button>
-	    	    <div class="content">
-		    <ul>
-	    	<li>View the <a href="https://www.freecodecamp.org/certification/nadavmoskow/responsive-web-design" target="_blank">Free Code Camp Certificate</a></li>
-		    </ul>
-	    </div>
-    <button class="collapsible">Built (Hard Coded) This Website</button>
-	    <div class="content">
-		    <ul>
-	    	<li>You can view the code on <a href="https://github.com/davmos15/Resumesite.git" target="_blank">Github</a></li>
-		    </ul>
-	    </div>
-    <button class="collapsible">Won 3 cricket grand finals in 3 appearances</button>
-      	    <div class="content">
-		    <ul>
-	    	<li>I can't claim that I won my team any of the matches as I didn't play my best cricket but you can view the scorecards below:</li>
-			    <ul>
-	    	<li><a href="https://mycricket.cricket.com.au/common/pages/public/rv/match.aspx?matchid=3647337&save=0&entityid=106" target="_blank">2021 vs Sunrise</a></li>
-	    	<li><a href="https://mycricket.cricket.com.au/common/pages/public/rv/match.aspx?matchid=2966876&save=0&entityid=106" target="_blank">2019 vs Carnegie</a></li>
-	    	<li><a href="https://mycricket.cricket.com.au/common/pages/public/rv/match.aspx?matchID=2140827&entityID=106" target="_blank">2016 vs Bentleigh</a></li>
-			    </ul>
-		    </ul>
-	    </div>
-
-<h1 id="Education">Education</h1>
-
-<button class="collapsible">Bachelor of Commerce</button>
-	  <div class="content">
-	    <h5>Deakin University
-		    <br>
-		2015 – 2019</h5>
-<ul>
-	<li>Major: Economics</li>
-</ul>
-	  </div>
-<button class="collapsible">VCE</button>
-	  <div class="content">
-	    <h5>Yeshiva College
-		    <br>
-		2013</h5>
-	  </div>
-  </div>
+<!-- Modal Overlay -->
+<div class="modal-overlay" id="modal-overlay" role="dialog" aria-modal="true" aria-hidden="true">
+  <div class="modal-content">
+    <button class="modal-close" aria-label="Close modal">&times;</button>
+    <div class="modal-header">
+      <h2 id="modal-title"></h2>
+      <p class="modal-subtitle" id="modal-subtitle"></p>
+      <p class="modal-dates" id="modal-dates"></p>
     </div>
-  <hr></hr>
+    <div class="modal-body" id="modal-body"></div>
+  </div>
+</div>
+
+<!-- Modal Data (hidden) -->
+<template id="modal-app-admin">
+  <div class="modal-data" data-title="Application Administrator" data-subtitle="Foxit Software Inc." data-dates="October 2022 - Current">
+    <h3>Key Responsibilities</h3>
+    <ul>
+      <li>Managed and maintained key business applications, including Oracle NetSuite, Freshdesk, KnowBe4, Bitwarden, and M365, ensuring optimal performance, security, and user accessibility.</li>
+      <li>Early adopter of AI technologies, regularly leveraging ChatGPT, Copilot, Claude and other AI tools to streamline workflows and drive innovation.</li>
+      <li>Leveraged data analysis tools, including Oracle NetSuite (SQL) and Excel, to extract actionable insights for cross-functional teams.</li>
+      <li>Designed, implemented, and optimised business system workflows and processes, working closely with stakeholders for continuous improvement.</li>
+      <li>Managed system enhancement projects, ensuring timely and cost-effective completion in alignment with business goals.</li>
+      <li>Documented system updates and processes, developed user manuals, and improved the knowledge base by creating and updating articles.</li>
+      <li>Collaborated across functional teams with IT and operations departments, ensuring business systems alignment and resolving issues.</li>
+      <li>Conducted interviews and led selection processes for multiple IT/IS roles.</li>
+    </ul>
+    <h3>Major Achievements</h3>
+    <ul>
+      <li><strong>Licence Optimisation:</strong> Analysed employees across 10+ SAAS products, identifying redundancies that generated over $100,000 in annual savings.</li>
+      <li><strong>PowerApps Development:</strong> Onboarding application for new employees and interactive organisation chart with search capabilities.</li>
+      <li><strong>Power Automate:</strong> Created flow to manage external GDPR & CCA data requests, processing 80+ unique requests monthly.</li>
+      <li><strong>System Integration:</strong> HiBob to Entra ID and NetSuite, improving data flow and user management.</li>
+      <li><strong>Governance:</strong> Brought control of external software under IT governance, including Asana and Zoom.</li>
+      <li><strong>NetSuite Migration:</strong> Managed data migration for 1000+ employees and millions of invoices and data records.</li>
+    </ul>
+  </div>
+</template>
+
+<template id="modal-program-manager">
+  <div class="modal-data" data-title="IT/IS-Sec Program Manager" data-subtitle="Foxit Software Inc." data-dates="June 2021 - September 2022">
+    <h3>Key Responsibilities</h3>
+    <ul>
+      <li>Reported directly to the CIO and collaborated on strategic technology initiatives.</li>
+      <li>Implemented process automation and improvement through Power Automate.</li>
+      <li>Monitored and actioned privacy inbox data deletion requests for compliance.</li>
+      <li>Managed the internal IT helpdesk (Freshdesk) and knowledge base, including content creation, video tutorials, ticket assignment, and usage optimisation.</li>
+      <li>Assisted in the global rollout of Microsoft Endpoint (Intune) to devices worldwide.</li>
+      <li>Developed and published global IT policies and procedures.</li>
+    </ul>
+    <h3>Major Achievements</h3>
+    <ul>
+      <li>Utilised Power Automate and Freshdesk to automate multiple processes, including comprehensive onboarding and offboarding workflows for all global staff.</li>
+      <li>Created the company's first comprehensive organisational chart using Visio and Azure AD data integration.</li>
+      <li>Established a new test Azure environment for employee SSO and application testing.</li>
+    </ul>
+  </div>
+</template>
+
+<template id="modal-digital-autopilot">
+  <div class="modal-data" data-title="Digital Marketing Manager (SEM & Data Analytics)" data-subtitle="Digital Autopilot" data-dates="July 2019 - May 2021">
+    <h3>Key Responsibilities</h3>
+    <ul>
+      <li>Guided new clients through onboarding and campaign creation processes.</li>
+      <li>Managed clients' Google accounts and implemented advanced techniques to improve campaign performance.</li>
+      <li>Conducted client meetings and delivered strategic presentations.</li>
+      <li>Created, designed and analysed client reports using Google Looker Studio, PowerBI, and AgencyAnalytics.</li>
+      <li>Directly managed one team member and provided indirect guidance to another for Google Ads and SEO optimisation.</li>
+    </ul>
+    <h3>Major Achievements</h3>
+    <ul>
+      <li>Increased leads for a repair business from approximately 30 to over 200 per month.</li>
+      <li>Doubled a beauty and wellness spa's leads and revenue - <a href="https://www.youtube.com/watch?v=JYWm-9sUi_U" target="_blank">watch here</a>.</li>
+    </ul>
+  </div>
+</template>
+
+<template id="modal-digital-advocates">
+  <div class="modal-data" data-title="Digital Marketing Manager" data-subtitle="Digital Advocates Group" data-dates="March 2017 - June 2019">
+    <h3>Key Responsibilities</h3>
+    <ul>
+      <li>Managed client accounts and implemented daily campaign optimisations.</li>
+      <li>Conducted regular client meetings to review key performance data and strategic recommendations.</li>
+      <li>Implemented innovative techniques to generate increased quality traffic for clients.</li>
+      <li>Created and analysed customised client reporting solutions.</li>
+      <li>Trained and mentored two team members in Google Ads best practices.</li>
+    </ul>
+    <h3>Major Achievements</h3>
+    <ul>
+      <li>Developed a semi-automated Google Sheet system to track all client account changes and optimisations.</li>
+      <li>Created a comprehensive CSV database of <a href="https://www.digitalautopilot.com.au/blogs/the-ultimate-list-of-melbourne-suburbs" target="_blank">Melbourne suburbs by distance and direction from the CBD</a> for geographic targeting.</li>
+    </ul>
+  </div>
+</template>
+
+<template id="modal-skill-microsoft">
+  <div class="modal-data" data-title="Microsoft" data-subtitle="" data-dates="">
+    <ul class="skill-list">
+      <li>Admin Suite, Power Platform</li>
+      <li>Power Automate, Azure AD, Admin Centre, Endpoint/Intune</li>
+      <li>SharePoint, OneDrive, Forms</li>
+    </ul>
+  </div>
+</template>
+
+<template id="modal-skill-ai">
+  <div class="modal-data" data-title="AI & Automation" data-subtitle="" data-dates="">
+    <ul class="skill-list">
+      <li>ChatGPT, Microsoft Copilot, Claude, Google AI Studio</li>
+      <li>Advanced workflow automation</li>
+    </ul>
+  </div>
+</template>
+
+<template id="modal-skill-data">
+  <div class="modal-data" data-title="Data Analysis" data-subtitle="" data-dates="">
+    <ul class="skill-list">
+      <li>R, SQL, Python</li>
+      <li>Google Looker Studio, Power BI, Excel</li>
+    </ul>
+  </div>
+</template>
+
+<template id="modal-skill-erp">
+  <div class="modal-data" data-title="ERP Systems" data-subtitle="" data-dates="">
+    <ul class="skill-list">
+      <li>Oracle NetSuite</li>
+    </ul>
+  </div>
+</template>
+
+<template id="modal-skill-dev">
+  <div class="modal-data" data-title="Development & Web" data-subtitle="" data-dates="">
+    <ul class="skill-list">
+      <li>PowerShell, HTML, CSS</li>
+      <li>WordPress, Shopify, WIX</li>
+    </ul>
+  </div>
+</template>
+
+<template id="modal-skill-pm">
+  <div class="modal-data" data-title="Project Management" data-subtitle="" data-dates="">
+    <ul class="skill-list">
+      <li>Asana, Miro, Monday.com</li>
+    </ul>
+  </div>
+</template>
+
+<template id="modal-achieve-website">
+  <div class="modal-data" data-title="Built This Personal Resume Website" data-subtitle="" data-dates="">
+    <p>Designed and built a personal resume website showcasing technical skills.</p>
+    <p>View the code on <a href="https://github.com/davmos15/Resumesite.git" target="_blank">GitHub</a>.</p>
+  </div>
+</template>
+
+<template id="modal-achieve-claude">
+  <div class="modal-data" data-title="Web Solutions Built with Claude" data-subtitle="" data-dates="">
+    <p>Designed and built several web solutions utilising Claude:</p>
+    <ul>
+      <li>Running analysis app</li>
+      <li>Hosting planner</li>
+      <li>Resume website</li>
+      <li>Job application tracker</li>
+    </ul>
+    <p>Review my <a href="https://github.com/davmos15" target="_blank">GitHub</a></p>
+  </div>
+</template>
+
+<template id="modal-achieve-fcc">
+  <div class="modal-data" data-title="Responsive Web Design Certificate" data-subtitle="Free Code Camp" data-dates="">
+    <p>Completed the Responsive Web Design course covering HTML and CSS.</p>
+    <p>View the <a href="https://www.freecodecamp.org/certification/nadavmoskow/responsive-web-design" target="_blank">Free Code Camp Certificate</a>.</p>
+  </div>
+</template>
+
+<template id="modal-achieve-marathon">
+  <div class="modal-data" data-title="Marathon Completion" data-subtitle="" data-dates="">
+    <p>Completed a marathon, demonstrating commitment, endurance, and dedication to personal goals.</p>
+  </div>
+</template>
+
+<template id="modal-achieve-cricket">
+  <div class="modal-data" data-title="3 Cricket Grand Final Wins" data-subtitle="" data-dates="">
+    <p>Won 3 cricket grand finals in 3 appearances - if I'm there, we'll win!</p>
+    <p>View the scorecards:</p>
+    <ul>
+      <li><a href="https://mycricket.cricket.com.au/common/pages/public/rv/match.aspx?matchid=3647337&save=0&entityid=106" target="_blank">2021 vs Sunrise</a></li>
+      <li><a href="https://mycricket.cricket.com.au/common/pages/public/rv/match.aspx?matchid=2966876&save=0&entityid=106" target="_blank">2019 vs Carnegie</a></li>
+      <li><a href="https://mycricket.cricket.com.au/common/pages/public/rv/match.aspx?matchID=2140827&entityID=106" target="_blank">2016 vs Bentleigh</a></li>
+    </ul>
+  </div>
+</template>
+
+<hr>
 
   <script src="script.js" charset="utf-8"></script>
 
