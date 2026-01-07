@@ -206,8 +206,32 @@ function initModals() {
   });
 }
 
+/* Handle dropdown navigation to tabs */
+function initDropdownTabNavigation() {
+  // Check URL for tab parameter on page load
+  const urlParams = new URLSearchParams(window.location.search);
+  const tabParam = urlParams.get('tab');
+
+  if (tabParam) {
+    const tabButton = document.querySelector(`.tab-btn[data-tab="${tabParam}"]`);
+    if (tabButton) {
+      tabButton.click();
+    }
+  }
+
+  // Add click handlers to dropdown items with data-tab
+  document.querySelectorAll('.dropitem[data-tab]').forEach(item => {
+    item.addEventListener('click', (e) => {
+      const tab = item.getAttribute('data-tab');
+      // Add tab parameter to URL
+      item.href = `Resume.html?tab=${tab}`;
+    });
+  });
+}
+
 /* Initialize on page load */
 document.addEventListener('DOMContentLoaded', () => {
   initTabs();
   initModals();
+  initDropdownTabNavigation();
 });
