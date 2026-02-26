@@ -14,22 +14,23 @@ Press Ctrl+C to stop the server.
 
 ## Recent Improvements
 
-1. **Local Development Server**: Added `server.py` for easy local testing
-2. **Dynamic Navigation**: Navigation is now loaded from a single `nav.html` file
-3. **Better Code Organization**: 
-   - Fixed duplicate IDs (changed to classes)
-   - Fixed HTML validation issues
-   - Consistent file extensions in links
-   - Removed empty CSS rules
+1. **Dark/Light Mode**: Toggle between dark and light themes (defaults to dark). Preference is saved in localStorage.
+2. **Portfolio Page**: Renamed from Projects, now features card-based layout with tabbed categories (Garmin, Android, Web Apps, Fun, Microsoft Suite, IT/Infrastructure). Automatically pulls public repos from GitHub.
+3. **CSS Custom Properties**: All colours use CSS variables for consistent theming.
+4. **Netlify Config**: Added `netlify.toml` with Node 22 and redirect from old projects URL.
+5. **Sticky Footer**: Footer now consistently sits at the bottom of all pages.
+6. **Local Development Server**: `server.py` for easy local testing.
+7. **Dynamic Navigation**: Navigation loaded from a single `nav.html` file.
 
 ## Structure
 
-- `nav.html` - Shared navigation component
+- `nav.html` - Shared navigation component (includes theme toggle)
 - `index.html` - Homepage
 - `about.html` - About page
 - `contact.html` - Contact page
-- `projects.html` - Projects page
-- `Resume.html` - Resume page
-- `movies.html` - Movie watchlist
-- `styles.css` - All styling
-- `script.js` - JavaScript functionality (navigation loading, typewriter effect, collapsibles)
+- `portfolio.html` - Portfolio page (card grid with GitHub integration)
+- `Resume.html` - Resume page (tabbed cards with modals)
+- `styles.css` - All styling (CSS custom properties for dark/light theming)
+- `script.js` - JavaScript (navigation, theme toggle, tabs, modals, GitHub API, portfolio rendering)
+- `netlify.toml` - Netlify deployment config (Node 22, redirects)
+- `server.py` - Local development server

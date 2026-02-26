@@ -1,0 +1,10 @@
+[build]
+  publish = "."
+
+[build.environment]
+  NODE_VERSION = "22"
+
+[[redirects]]
+  from = "/projects.html"
+  to = "/portfolio.html"
+  status = 301

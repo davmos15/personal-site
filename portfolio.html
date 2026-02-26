@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script>document.documentElement.setAttribute('data-theme', localStorage.getItem('theme') || 'dark');</script>
+    <title>Portfolio | Nadav's Resume</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/png" href="/NM1.png">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+</head>
+
+<body>
+<div id="nav-placeholder"></div>
+
+<div id="portfolio-page">
+  <h1>My Portfolio</h1>
+
+  <!-- Tab Navigation -->
+  <nav class="tab-container" role="tablist" aria-label="Portfolio categories">
+    <button class="tab-btn active" role="tab" data-tab="all">All</button>
+    <button class="tab-btn" role="tab" data-tab="android">Android</button>
+    <button class="tab-btn" role="tab" data-tab="fun">Fun</button>
+    <button class="tab-btn" role="tab" data-tab="garmin">Garmin</button>
+    <button class="tab-btn" role="tab" data-tab="it-infrastructure">IT / Infrastructure</button>
+    <button class="tab-btn" role="tab" data-tab="microsoft-suite">Microsoft Suite</button>
+    <button class="tab-btn" role="tab" data-tab="web">Web Apps</button>
+  </nav>
+
+  <!-- Card grid (populated by JavaScript) -->
+  <div id="portfolio-grid" class="card-grid">
+    <p id="portfolio-loading">Loading projects...</p>
+  </div>
+</div>
+
+<hr>
+
+<script src="script.js" charset="utf-8"></script>
+
+<footer>
+  <p> Created by Nadav Moskow <a href="https://www.linkedin.com/in/nadav-moskow" target="_blank" id="linkedin-link"><img src="https://cdn.worldvectorlogo.com/logos/linkedin-icon-2.svg" id="linkedin"></a></p>
+</footer>
+</body>
+</html>
