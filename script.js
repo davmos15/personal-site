@@ -1,45 +1,3 @@
-/* ===== Typewriter Effect ===== */
-var TxtType = function(el, toRotate, period) {
-    this.toRotate = toRotate;
-    this.el = el;
-    this.loopNum = 0;
-    this.period = parseInt(period, 10) || 2000;
-    this.txt = '';
-    this.tick();
-    this.isDeleting = false;
-};
-
-TxtType.prototype.tick = function() {
-    var i = this.loopNum % this.toRotate.length;
-    var fullTxt = this.toRotate[i];
-
-    if (this.isDeleting) {
-    this.txt = fullTxt.substring(0, this.txt.length - 1);
-    } else {
-    this.txt = fullTxt.substring(0, this.txt.length + 1);
-    }
-
-    this.el.innerHTML = '<span class="wrap">'+this.txt+'</span>';
-
-    var that = this;
-    var delta = 200 - Math.random() * 100;
-
-    if (this.isDeleting) { delta /= 2; }
-
-    if (!this.isDeleting && this.txt === fullTxt) {
-    delta = this.period;
-    this.isDeleting = true;
-    } else if (this.isDeleting && this.txt === '') {
-    this.isDeleting = false;
-    this.loopNum++;
-    delta = 500;
-    }
-
-    setTimeout(function() {
-    that.tick();
-    }, delta);
-};
-
 /* ===== Theme Toggle ===== */
 function initTheme() {
   const savedTheme = localStorage.getItem('theme') || 'dark';
@@ -80,38 +38,9 @@ function loadNavigation() {
             updateThemeIcon(document.documentElement.getAttribute('data-theme') || 'dark');
             // Re-init dropdown navigation after nav loads
             initDropdownTabNavigation();
+            initDropdownKeyboard();
         })
         .catch(error => console.error('Error loading navigation:', error));
-}
-
-window.onload = function() {
-    initTheme();
-    loadNavigation();
-
-    var elements = document.getElementsByClassName('typewrite');
-    for (var i=0; i<elements.length; i++) {
-        var toRotate = elements[i].getAttribute('data-type');
-        var period = elements[i].getAttribute('data-period');
-        if (toRotate) {
-          new TxtType(elements[i], JSON.parse(toRotate), period);
-        }
-    }
-};
-
-/*code to make the resume boxes expand*/
-var coll = document.getElementsByClassName("collapsible");
-var i;
-
-for (i = 0; i < coll.length; i++) {
-  coll[i].addEventListener("click", function() {
-    this.classList.toggle("active");
-    var content = this.nextElementSibling;
-    if (content.style.maxHeight){
-      content.style.maxHeight = null;
-    } else {
-      content.style.maxHeight = content.scrollHeight + "px";
-    }
-  });
 }
 
 /* ===== Tab Navigation ===== */
@@ -174,6 +103,8 @@ function initModals() {
 
   if (!modalOverlay) return;
 
+  let triggerElement = null;
+
   // Get all clickable cards
   const cards = document.querySelectorAll('[data-modal]');
 
@@ -202,6 +133,7 @@ function initModals() {
           });
         }
 
+        triggerElement = card;
         modalOverlay.classList.add('active');
         modalOverlay.setAttribute('aria-hidden', 'false');
         document.body.style.overflow = 'hidden';
@@ -218,11 +150,15 @@ function initModals() {
     });
   });
 
-  // Close modal
+  // Close modal and return focus
   function closeModal() {
     modalOverlay.classList.remove('active');
     modalOverlay.setAttribute('aria-hidden', 'true');
     document.body.style.overflow = '';
+    if (triggerElement) {
+      triggerElement.focus();
+      triggerElement = null;
+    }
   }
 
   modalClose.addEventListener('click', closeModal);
@@ -236,6 +172,86 @@ function initModals() {
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && modalOverlay.classList.contains('active')) {
       closeModal();
+    }
+  });
+
+  // Focus trap inside modal
+  modalOverlay.addEventListener('keydown', (e) => {
+    if (e.key !== 'Tab' || !modalOverlay.classList.contains('active')) return;
+
+    const focusableElements = modalOverlay.querySelectorAll(
+      'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+    );
+    if (focusableElements.length === 0) return;
+
+    const firstFocusable = focusableElements[0];
+    const lastFocusable = focusableElements[focusableElements.length - 1];
+
+    if (e.shiftKey) {
+      if (document.activeElement === firstFocusable) {
+        e.preventDefault();
+        lastFocusable.focus();
+      }
+    } else {
+      if (document.activeElement === lastFocusable) {
+        e.preventDefault();
+        firstFocusable.focus();
+      }
+    }
+  });
+}
+
+/* ===== Dropdown Keyboard Accessibility ===== */
+function initDropdownKeyboard() {
+  const dropdown = document.querySelector('.dropdown');
+  if (!dropdown) return;
+
+  const dropbtn = dropdown.querySelector('.dropbtn');
+  const dropdownContent = dropdown.querySelector('.dropdown-content');
+  const dropItems = dropdown.querySelectorAll('.dropitem');
+
+  if (!dropbtn || !dropdownContent || dropItems.length === 0) return;
+
+  // Toggle dropdown on Enter/Space
+  dropbtn.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      // Allow default link navigation for Enter
+      if (e.key === ' ') {
+        e.preventDefault();
+        dropdownContent.classList.toggle('show');
+        if (dropdownContent.classList.contains('show')) {
+          dropItems[0].focus();
+        }
+      }
+    } else if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      dropdownContent.classList.add('show');
+      dropItems[0].focus();
+    }
+  });
+
+  // Keyboard navigation within dropdown items
+  dropItems.forEach((item, index) => {
+    item.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        const next = dropItems[index + 1] || dropItems[0];
+        next.focus();
+      } else if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        const prev = dropItems[index - 1] || dropItems[dropItems.length - 1];
+        prev.focus();
+      } else if (e.key === 'Escape') {
+        dropdownContent.classList.remove('show');
+        dropbtn.focus();
+      }
+    });
+  });
+
+  // Close dropdown when clicking outside
+  document.addEventListener('click', (e) => {
+    if (!dropdown.contains(e.target)) {
+      dropdownContent.classList.remove('show');
     }
   });
 }
@@ -429,10 +445,10 @@ function renderPortfolioCards(projects, filter) {
 
     const linksHtml = [];
     if (project.repoUrl) {
-      linksHtml.push(`<a href="${escapeHtml(project.repoUrl)}" target="_blank" rel="noopener" class="card-link" onclick="event.stopPropagation()">Code</a>`);
+      linksHtml.push(`<a href="${escapeHtml(project.repoUrl)}" target="_blank" rel="noopener noreferrer" class="card-link" onclick="event.stopPropagation()">Code</a>`);
     }
     if (project.liveUrl) {
-      linksHtml.push(`<a href="${escapeHtml(project.liveUrl)}" target="_blank" rel="noopener" class="card-link card-link-primary" onclick="event.stopPropagation()">Live Demo</a>`);
+      linksHtml.push(`<a href="${escapeHtml(project.liveUrl)}" target="_blank" rel="noopener noreferrer" class="card-link card-link-primary" onclick="event.stopPropagation()">Live Demo</a>`);
     }
 
     const hasLinks = linksHtml.length > 0;
@@ -463,10 +479,32 @@ function initPortfolioTabs(projects) {
     button.addEventListener('click', () => {
       const category = button.getAttribute('data-tab');
 
-      tabButtons.forEach(btn => btn.classList.remove('active'));
+      tabButtons.forEach(btn => {
+        btn.classList.remove('active');
+        btn.setAttribute('aria-selected', 'false');
+      });
       button.classList.add('active');
+      button.setAttribute('aria-selected', 'true');
 
       renderPortfolioCards(projects, category);
+    });
+
+    // Keyboard navigation for portfolio tabs
+    button.addEventListener('keydown', (e) => {
+      const tabs = Array.from(tabButtons);
+      const currentIndex = tabs.indexOf(button);
+
+      if (e.key === 'ArrowRight') {
+        e.preventDefault();
+        const nextIndex = (currentIndex + 1) % tabs.length;
+        tabs[nextIndex].focus();
+        tabs[nextIndex].click();
+      } else if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        const prevIndex = (currentIndex - 1 + tabs.length) % tabs.length;
+        tabs[prevIndex].focus();
+        tabs[prevIndex].click();
+      }
     });
   });
 }
@@ -483,6 +521,8 @@ async function initPortfolio() {
 
 /* ===== Initialize on page load ===== */
 document.addEventListener('DOMContentLoaded', () => {
+  initTheme();
+  loadNavigation();
   initTabs();
   initModals();
   initPortfolio();

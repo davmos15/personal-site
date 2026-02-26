@@ -197,6 +197,8 @@ nav ul li {
   border: none;
   padding: unset;
   background-color: transparent;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 .dropdown {
@@ -216,7 +218,12 @@ nav ul li {
   border-radius: 0;
 }
 
-.dropdown:hover .dropdown-content {
+.dropdown:hover .dropdown-content,
+.dropdown-content.show {
+  display: block;
+}
+
+.dropdown:focus-within .dropdown-content {
   display: block;
 }
 
@@ -273,6 +280,7 @@ nav ul li {
 
 /*Resume Page*/
 .download-btn {
+  display: inline-block;
   background-color: var(--color-primary);
   color: var(--color-text-on-primary);
   border: none;
@@ -281,6 +289,7 @@ nav ul li {
   border-radius: 8px;
   font-size: 16px;
   font-weight: 600;
+  text-decoration: none;
   transition: background-color 0.2s ease, transform 0.1s ease;
 }
 
@@ -643,49 +652,6 @@ form {
 }
 
 
-/* To make the resume expandable & collapsable */
-.collapsible {
-  background-color: var(--color-primary);
-  color: var(--color-text-on-primary);
-  cursor: pointer;
-  padding: 10px;
-  width: 100%;
-  border-width: thin;
-  border-color: var(--color-primary-border);
-  font-size: large;
-  font-weight: 500;
-}
-
-.collapsible.active, .collapsible:hover {
-  background-color: var(--color-primary);
-}
-
-.collapsible:after {
-  content: "+";
-  color: var(--color-text-on-primary);
-  font-weight: bold;
-  float: right;
-  margin-left: 5px;
-}
-
-.collapsible.active:after {
-  content: "-";
-}
-
-.content {
-  padding: 0 3vw;
-  overflow: hidden;
-  max-height: 0;
-  transition: max-height 0.2s ease-out;
-  background-color: var(--color-bg-muted);
-}
-
-/*To split the skills section
-#split-column {
-  columns: 2;
-  -webkit-columns: 2;
-  -moz-columns: 2;
-}*/
 
 /*Portfolio page*/
 #portfolio-page {
@@ -924,7 +890,7 @@ ol {
     height: 2rem;
     width: 2rem;
   }
-  .topnav a, topnav, .topnav ul, navbar, #resumebutton {
+  .topnav a, .topnav, .topnav ul, #navbar, #resumebutton {
     font-size: .6rem;
   }
   ul {
