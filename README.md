@@ -1,36 +1,25 @@
-# Nadav's Resume Website
+# Nadav Moskow - Personal Site
 
-## Running Locally
+[nadavm.netlify.app](https://nadavm.netlify.app)
 
-To view the website locally before pushing to Git:
+Personal portfolio and resume website for Nadav Moskow — Application Administrator at Foxit Software with expertise in business systems, process automation, and AI integration.
 
-```bash
-python3 server.py
-```
+## What's on the Site
 
-This will start a local server at http://localhost:8000/ and automatically open it in your browser.
+- **Home** — Introduction and background
+- **Resume** — Experience, skills, education, and achievements with interactive card modals
+- **Portfolio** — Project showcase with tabbed categories (Microsoft Suite, IT/Infrastructure, Garmin, Android, Web Apps, Fun). Automatically pulls public repos from GitHub
+- **About** — More about me
+- **Contact** — Get in touch via form or email
 
-Press Ctrl+C to stop the server.
+## Features
 
-## Recent Improvements
+- Dark/light mode toggle with saved preference
+- Responsive design for mobile and desktop
+- Dynamic navigation loaded from a shared component
+- GitHub API integration for automatic portfolio updates
+- Netlify Forms for contact submissions
 
-1. **Dark/Light Mode**: Toggle between dark and light themes (defaults to dark). Preference is saved in localStorage.
-2. **Portfolio Page**: Renamed from Projects, now features card-based layout with tabbed categories (Garmin, Android, Web Apps, Fun, Microsoft Suite, IT/Infrastructure). Automatically pulls public repos from GitHub.
-3. **CSS Custom Properties**: All colours use CSS variables for consistent theming.
-4. **Netlify Config**: Added `netlify.toml` with Node 22 and redirect from old projects URL.
-5. **Sticky Footer**: Footer now consistently sits at the bottom of all pages.
-6. **Local Development Server**: `server.py` for easy local testing.
-7. **Dynamic Navigation**: Navigation loaded from a single `nav.html` file.
+## Built With
 
-## Structure
-
-- `nav.html` - Shared navigation component (includes theme toggle)
-- `index.html` - Homepage
-- `about.html` - About page
-- `contact.html` - Contact page
-- `portfolio.html` - Portfolio page (card grid with GitHub integration)
-- `Resume.html` - Resume page (tabbed cards with modals)
-- `styles.css` - All styling (CSS custom properties for dark/light theming)
-- `script.js` - JavaScript (navigation, theme toggle, tabs, modals, GitHub API, portfolio rendering)
-- `netlify.toml` - Netlify deployment config (Node 22, redirects)
-- `server.py` - Local development server
+HTML, CSS, JavaScript — hosted on [Netlify](https://www.netlify.com)

@@ -322,7 +322,7 @@ const SUPPRESS_LIVE_URL = ['personal-site'];
 const PORTFOLIO_PROJECTS = [
   {
     id: 'onboarding-offboarding',
-    name: 'Onboarding & Offboarding Automation',
+    name: 'Onboarding & Offboarding Automations',
     description: 'Designed and implemented automated onboarding and offboarding systems using Power Automate, integrating Microsoft Forms, Freshdesk, Email, and Teams to streamline the entire employee lifecycle.',
     category: 'microsoft-suite',
     tools: ['Power Automate', 'Microsoft Forms', 'Freshdesk', 'Teams', 'Outlook'],
@@ -356,6 +356,36 @@ const PORTFOLIO_PROJECTS = [
     description: 'Brought external software under IT governance, managed helpdesk operations, and developed IT policies and procedures for global staff.',
     category: 'it-infrastructure',
     tools: ['Freshdesk', 'IT Governance', 'Policy Development'],
+    repoUrl: null,
+    liveUrl: null,
+    source: 'manual'
+  },
+  {
+    id: 'privacy-automation',
+    name: 'Privacy Request Automation',
+    description: 'Automated GDPR and CCPA data deletion and access requests. Employees submit requests via Microsoft Forms, triggering a Power Automate flow that alerts the appropriate teams via Teams adaptive cards. Responses are tracked and audited in a SharePoint list.',
+    category: 'microsoft-suite',
+    tools: ['Power Automate', 'Microsoft Forms', 'Teams', 'SharePoint'],
+    repoUrl: null,
+    liveUrl: null,
+    source: 'manual'
+  },
+  {
+    id: 'feature-upgrade-sync',
+    name: 'Feature Upgrade List Sync',
+    description: 'Automated weekly sync of feature upgrades from Jira to SharePoint sites for various IT-managed software using an Azure Function. A Power Automate flow merges all updates into a master list, providing a single source of truth that auto-updates weekly.',
+    category: 'microsoft-suite',
+    tools: ['Azure Functions', 'Power Automate', 'Jira', 'SharePoint'],
+    repoUrl: null,
+    liveUrl: null,
+    source: 'manual'
+  },
+  {
+    id: 'sales-rep-copilot',
+    name: 'Sales Rep Copilot Agent',
+    description: 'Built a Copilot Studio agent that allows users to query in natural language to find the appropriate sales rep for any region, deal value, or other criteria. Powered by a SharePoint list as the data source.',
+    category: 'microsoft-suite',
+    tools: ['Copilot Studio', 'SharePoint'],
     repoUrl: null,
     liveUrl: null,
     source: 'manual'
@@ -408,9 +438,9 @@ async function loadPortfolioProjects() {
     .filter(repo => !EXCLUDED_REPOS.includes(repo.name))
     .map(repo => ({
       id: repo.name,
-      name: REPO_NAME_OVERRIDES[repo.name] || repo.name,
+      name: REPO_NAME_OVERRIDES[repo.name] || repo.name.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' '),
       description: repo.description || 'No description available.',
-      category: REPO_CATEGORIES[repo.name] || 'other',
+      category: REPO_CATEGORIES[repo.name] || 'web',
       tools: [repo.language].filter(Boolean),
       repoUrl: repo.html_url,
       liveUrl: SUPPRESS_LIVE_URL.includes(repo.name) ? null : (repo.homepage || null),
@@ -448,13 +478,13 @@ function renderPortfolioCards(projects, filter) {
       linksHtml.push(`<a href="${escapeHtml(project.repoUrl)}" target="_blank" rel="noopener noreferrer" class="card-link" onclick="event.stopPropagation()">Code</a>`);
     }
     if (project.liveUrl) {
-      linksHtml.push(`<a href="${escapeHtml(project.liveUrl)}" target="_blank" rel="noopener noreferrer" class="card-link card-link-primary" onclick="event.stopPropagation()">Live Demo</a>`);
+      linksHtml.push(`<a href="${escapeHtml(project.liveUrl)}" target="_blank" rel="noopener noreferrer" class="card-link card-link-primary" onclick="event.stopPropagation()">Live Site</a>`);
     }
 
     const hasLinks = linksHtml.length > 0;
 
     return `
-      <article class="portfolio-card" tabindex="0" data-project-id="${escapeHtml(project.id)}">
+      <article class="portfolio-card" data-project-id="${escapeHtml(project.id)}">
         <h3 class="card-title">${escapeHtml(project.name)}</h3>
         <p class="card-summary">${escapeHtml(project.description)}</p>
         <div class="card-tools">${toolsHtml}</div>
