@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Resume | Nadav Moskow</title>
-  <meta name="description" content="The career timeline of Nadav Moskow — experience, builds, skills, education and achievements.">
+  <meta name="description" content="The career timeline of Nadav Moskow — experience, skills, education and achievements.">
   <link rel="shortcut icon" type="image/png" href="/NM1.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -38,7 +38,6 @@
     <div class="filter-pills" role="group" aria-label="Filter timeline">
       <button class="pill active" data-filter="all" aria-pressed="true">All</button>
       <button class="pill" data-filter="experience" aria-pressed="false">Experience</button>
-      <button class="pill" data-filter="build" aria-pressed="false">Builds</button>
     </div>
 
     <!-- Timeline -->
@@ -46,10 +45,23 @@
 
       <li class="timeline-item is-current" data-type="experience">
         <span class="timeline-node" aria-hidden="true"></span>
+        <button class="timeline-card" data-modal="modal-intel-auto">
+          <div class="timeline-meta">
+            <span class="timeline-dates">Apr 2026 &ndash; Current</span>
+            <span class="badge badge-current">Current</span>
+          </div>
+          <h3>Intelligence Automation Specialist</h3>
+          <p class="timeline-org">South Eastern Melbourne Primary Health Network</p>
+          <p class="card-summary">Designing and implementing AI-powered automation solutions to improve operational efficiency across a primary health network.</p>
+          <span class="card-cue">View detail <i class="ti ti-arrow-right" aria-hidden="true"></i></span>
+        </button>
+      </li>
+
+      <li class="timeline-item" data-type="experience">
+        <span class="timeline-node" aria-hidden="true"></span>
         <button class="timeline-card" data-modal="modal-app-admin">
           <div class="timeline-meta">
-            <span class="timeline-dates">Oct 2022 &ndash; Current</span>
-            <span class="badge badge-current">Current</span>
+            <span class="timeline-dates">Oct 2022 &ndash; Mar 2026</span>
           </div>
           <h3>Application Administrator</h3>
           <p class="timeline-org">Foxit Software Inc.</p>
@@ -58,33 +70,6 @@
         </button>
       </li>
 
-      <li class="timeline-item" data-type="build">
-        <span class="timeline-node" aria-hidden="true"></span>
-        <button class="timeline-card" data-modal="modal-build-apps">
-          <div class="timeline-meta">
-            <span class="timeline-dates">2024</span>
-            <span class="badge badge-build">Build</span>
-          </div>
-          <h3>Web Apps &amp; Tools Built with Claude</h3>
-          <p class="timeline-org">Personal projects</p>
-          <p class="card-summary">A run of small, useful builds — a running analytics dashboard, a job application tracker, a hosting planner and more.</p>
-          <span class="card-cue">View detail <i class="ti ti-arrow-right" aria-hidden="true"></i></span>
-        </button>
-      </li>
-
-      <li class="timeline-item" data-type="build">
-        <span class="timeline-node" aria-hidden="true"></span>
-        <button class="timeline-card" data-modal="modal-build-site">
-          <div class="timeline-meta">
-            <span class="timeline-dates">2023</span>
-            <span class="badge badge-build">Build</span>
-          </div>
-          <h3>This Personal Resume Website</h3>
-          <p class="timeline-org">Personal project</p>
-          <p class="card-summary">Designed and built this site from scratch to sharpen my HTML, CSS and JavaScript — the one you're reading now.</p>
-          <span class="card-cue">View detail <i class="ti ti-arrow-right" aria-hidden="true"></i></span>
-        </button>
-      </li>
 
       <li class="timeline-item" data-type="experience">
         <span class="timeline-node" aria-hidden="true"></span>
@@ -230,7 +215,7 @@
 
 <!-- Modal content (hidden templates) -->
 <template id="modal-app-admin">
-  <div class="modal-data" data-title="Application Administrator" data-subtitle="Foxit Software Inc." data-dates="October 2022 - Current">
+  <div class="modal-data" data-title="Application Administrator" data-subtitle="Foxit Software Inc." data-dates="October 2022 - March 2026">
     <h3>Key Responsibilities</h3>
     <ul>
       <li>Managed and maintained key business applications, including Oracle NetSuite, Freshdesk, KnowBe4, Bitwarden, and M365, ensuring optimal performance, security, and user accessibility.</li>
@@ -310,25 +295,6 @@
   </div>
 </template>
 
-<template id="modal-build-apps">
-  <div class="modal-data" data-title="Web Apps &amp; Tools Built with Claude" data-subtitle="Personal projects" data-dates="2024">
-    <p>A run of small, practical web solutions designed and built with the help of Claude:</p>
-    <ul>
-      <li>Running analytics dashboard</li>
-      <li>Hosting / Friday-night dinner planner</li>
-      <li>Job application tracker</li>
-      <li>Assorted Garmin and Android utilities</li>
-    </ul>
-    <p>Browse them all on my <a href="portfolio.html">portfolio</a> or review the code on <a href="https://github.com/davmos15" target="_blank" rel="noopener noreferrer">GitHub</a>.</p>
-  </div>
-</template>
-
-<template id="modal-build-site">
-  <div class="modal-data" data-title="This Personal Resume Website" data-subtitle="Personal project" data-dates="2023">
-    <p>Designed and built this personal resume website from scratch to showcase and sharpen my technical skills — hand-written HTML, CSS and JavaScript with a dark/light theme, GitHub-powered portfolio and accessible modals.</p>
-    <p>View the code on <a href="https://github.com/davmos15/personal-site" target="_blank" rel="noopener noreferrer">GitHub</a>.</p>
-  </div>
-</template>
 
 <template id="modal-skill-microsoft">
   <div class="modal-data" data-title="Microsoft" data-subtitle="" data-dates="">
@@ -424,6 +390,21 @@
       <li><a href="https://mycricket.cricket.com.au/common/pages/public/rv/match.aspx?matchid=3647337&amp;save=0&amp;entityid=106" target="_blank" rel="noopener noreferrer">2021 vs Sunrise</a></li>
       <li><a href="https://mycricket.cricket.com.au/common/pages/public/rv/match.aspx?matchid=2966876&amp;save=0&amp;entityid=106" target="_blank" rel="noopener noreferrer">2019 vs Carnegie</a></li>
       <li><a href="https://mycricket.cricket.com.au/common/pages/public/rv/match.aspx?matchID=2140827&amp;entityID=106" target="_blank" rel="noopener noreferrer">2016 vs Bentleigh</a></li>
+    </ul>
+  </div>
+</template>
+
+<template id="modal-intel-auto">
+  <div class="modal-data" data-title="Intelligence Automation Specialist" data-subtitle="South Eastern Melbourne Primary Health Network" data-dates="April 2026 - Current">
+    <h3>Key Responsibilities</h3>
+    <ul>
+      <li>Designing and implementing AI-driven automation solutions to streamline operations across a primary health network.</li>
+      <li>Identifying manual processes and transforming them into efficient, reliable automated workflows.</li>
+      <li>Collaborating with clinical and operational stakeholders to understand requirements and deliver practical solutions.</li>
+    </ul>
+    <h3>Major Achievements</h3>
+    <ul>
+      <li>Update with key achievements at SEMPHN.</li>
     </ul>
   </div>
 </template>
