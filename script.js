@@ -16,78 +16,126 @@ function toggleTheme() {
 function updateThemeIcon(theme) {
   const icon = document.getElementById('theme-icon');
   if (icon) {
-    // Show sun in dark mode (click to go light), moon in light mode (click to go dark)
-    icon.textContent = theme === 'dark' ? '\u2600' : '\u263E';
+    // Plain Unicode glyph so it never renders blank if a webfont is slow.
+    // Show sun in dark mode (click to go light), moon in light mode (click to go dark).
+    icon.textContent = theme === 'dark' ? '☀' : '☾';
   }
 }
 
 /* ===== Navigation ===== */
-function loadNavigation() {
-    fetch('nav.html')
-        .then(response => response.text())
-        .then(data => {
-            const navContainers = document.querySelectorAll('#nav-placeholder');
-            navContainers.forEach(container => {
-                container.innerHTML = data;
-            });
-            // Attach theme toggle after nav is injected
-            const toggleBtn = document.getElementById('theme-toggle');
-            if (toggleBtn) {
-                toggleBtn.addEventListener('click', toggleTheme);
-            }
-            updateThemeIcon(document.documentElement.getAttribute('data-theme') || 'dark');
-            // Re-init dropdown navigation after nav loads
-            initDropdownTabNavigation();
-            initDropdownKeyboard();
-        })
-        .catch(error => console.error('Error loading navigation:', error));
+function highlightActivePage() {
+  let path = window.location.pathname.split('/').pop() || 'index.html';
+  if (path === '') path = 'index.html';
+  const page = path.replace('.html', '').toLowerCase() || 'index';
+  document.querySelectorAll('.nav-menu a[data-page]').forEach(link => {
+    if (link.getAttribute('data-page') === page) {
+      link.classList.add('active');
+      link.setAttribute('aria-current', 'page');
+    } else {
+      link.classList.remove('active');
+      link.removeAttribute('aria-current');
+    }
+  });
 }
 
-/* ===== Tab Navigation ===== */
-function initTabs() {
-  const tabButtons = document.querySelectorAll('#resume .tab-btn');
-  const tabPanels = document.querySelectorAll('.tab-panel');
+function initHamburger() {
+  const toggle = document.querySelector('.nav-toggle');
+  const menu = document.getElementById('nav-menu');
+  if (!toggle || !menu) return;
 
-  if (tabButtons.length === 0) return;
+  const setOpen = (open) => {
+    menu.classList.toggle('open', open);
+    toggle.setAttribute('aria-expanded', String(open));
+  };
 
-  tabButtons.forEach(button => {
-    button.addEventListener('click', () => {
-      const targetTab = button.getAttribute('data-tab');
+  toggle.addEventListener('click', () => {
+    setOpen(toggle.getAttribute('aria-expanded') !== 'true');
+  });
 
-      // Update button states
-      tabButtons.forEach(btn => {
-        btn.classList.remove('active');
-        btn.setAttribute('aria-selected', 'false');
-      });
-      button.classList.add('active');
-      button.setAttribute('aria-selected', 'true');
+  // Close when a nav link is tapped
+  menu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => setOpen(false));
+  });
 
-      // Update panel visibility
-      tabPanels.forEach(panel => {
-        panel.classList.remove('active');
-      });
-      const targetPanel = document.getElementById(`${targetTab}-panel`);
-      if (targetPanel) {
-        targetPanel.classList.add('active');
-      }
+  // Close on Escape
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && menu.classList.contains('open')) {
+      setOpen(false);
+      toggle.focus();
+    }
+  });
+}
+
+// Wire up everything inside the nav once it is present in the DOM
+function wireNav() {
+  const toggleBtn = document.getElementById('theme-toggle');
+  if (toggleBtn) {
+    toggleBtn.addEventListener('click', toggleTheme);
+  }
+  updateThemeIcon(document.documentElement.getAttribute('data-theme') || 'dark');
+  highlightActivePage();
+  initHamburger();
+}
+
+function loadNavigation() {
+  const placeholder = document.getElementById('nav-placeholder');
+  // If the placeholder is present and empty, inject the nav partial (static hosting).
+  if (placeholder && placeholder.children.length === 0) {
+    fetch('nav.html')
+      .then(response => response.text())
+      .then(data => {
+        placeholder.innerHTML = data;
+        wireNav();
+      })
+      .catch(error => console.error('Error loading navigation:', error));
+  } else {
+    // Nav already injected (e.g. server-side include) — just wire it up.
+    wireNav();
+  }
+}
+
+function loadFooter() {
+  const placeholder = document.getElementById('footer-placeholder');
+  if (!placeholder) {
+    setFooterYear();
+    return;
+  }
+  fetch('footer.html')
+    .then(response => response.text())
+    .then(data => {
+      placeholder.innerHTML = data;
+      setFooterYear();
+    })
+    .catch(error => console.error('Error loading footer:', error));
+}
+
+function setFooterYear() {
+  const yearEl = document.getElementById('footer-year');
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
+}
+
+/* ===== Resume Timeline Filter ===== */
+function initTimelineFilter() {
+  const pills = document.querySelectorAll('.filter-pills .pill');
+  const items = document.querySelectorAll('#timeline .timeline-item');
+  if (pills.length === 0 || items.length === 0) return;
+
+  const applyFilter = (filter) => {
+    items.forEach(item => {
+      const show = filter === 'all' || item.getAttribute('data-type') === filter;
+      item.classList.toggle('is-hidden', !show);
     });
+  };
 
-    // Keyboard navigation
-    button.addEventListener('keydown', (e) => {
-      const tabs = Array.from(tabButtons);
-      const currentIndex = tabs.indexOf(button);
-
-      if (e.key === 'ArrowRight') {
-        e.preventDefault();
-        const nextIndex = (currentIndex + 1) % tabs.length;
-        tabs[nextIndex].focus();
-        tabs[nextIndex].click();
-      } else if (e.key === 'ArrowLeft') {
-        e.preventDefault();
-        const prevIndex = (currentIndex - 1 + tabs.length) % tabs.length;
-        tabs[prevIndex].focus();
-        tabs[prevIndex].click();
-      }
+  pills.forEach(pill => {
+    pill.addEventListener('click', () => {
+      pills.forEach(p => {
+        p.classList.remove('active');
+        p.setAttribute('aria-pressed', 'false');
+      });
+      pill.classList.add('active');
+      pill.setAttribute('aria-pressed', 'true');
+      applyFilter(pill.getAttribute('data-filter'));
     });
   });
 }
@@ -198,84 +246,6 @@ function initModals() {
         firstFocusable.focus();
       }
     }
-  });
-}
-
-/* ===== Dropdown Keyboard Accessibility ===== */
-function initDropdownKeyboard() {
-  const dropdown = document.querySelector('.dropdown');
-  if (!dropdown) return;
-
-  const dropbtn = dropdown.querySelector('.dropbtn');
-  const dropdownContent = dropdown.querySelector('.dropdown-content');
-  const dropItems = dropdown.querySelectorAll('.dropitem');
-
-  if (!dropbtn || !dropdownContent || dropItems.length === 0) return;
-
-  // Toggle dropdown on Enter/Space
-  dropbtn.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter' || e.key === ' ') {
-      // Allow default link navigation for Enter
-      if (e.key === ' ') {
-        e.preventDefault();
-        dropdownContent.classList.toggle('show');
-        if (dropdownContent.classList.contains('show')) {
-          dropItems[0].focus();
-        }
-      }
-    } else if (e.key === 'ArrowDown') {
-      e.preventDefault();
-      dropdownContent.classList.add('show');
-      dropItems[0].focus();
-    }
-  });
-
-  // Keyboard navigation within dropdown items
-  dropItems.forEach((item, index) => {
-    item.addEventListener('keydown', (e) => {
-      if (e.key === 'ArrowDown') {
-        e.preventDefault();
-        const next = dropItems[index + 1] || dropItems[0];
-        next.focus();
-      } else if (e.key === 'ArrowUp') {
-        e.preventDefault();
-        const prev = dropItems[index - 1] || dropItems[dropItems.length - 1];
-        prev.focus();
-      } else if (e.key === 'Escape') {
-        dropdownContent.classList.remove('show');
-        dropbtn.focus();
-      }
-    });
-  });
-
-  // Close dropdown when clicking outside
-  document.addEventListener('click', (e) => {
-    if (!dropdown.contains(e.target)) {
-      dropdownContent.classList.remove('show');
-    }
-  });
-}
-
-/* ===== Dropdown Tab Navigation ===== */
-function initDropdownTabNavigation() {
-  // Check URL for tab parameter on page load
-  const urlParams = new URLSearchParams(window.location.search);
-  const tabParam = urlParams.get('tab');
-
-  if (tabParam) {
-    const tabButton = document.querySelector(`.tab-btn[data-tab="${tabParam}"]`);
-    if (tabButton) {
-      tabButton.click();
-    }
-  }
-
-  // Add click handlers to dropdown items with data-tab
-  document.querySelectorAll('.dropitem[data-tab]').forEach(item => {
-    item.addEventListener('click', (e) => {
-      const tab = item.getAttribute('data-tab');
-      // Add tab parameter to URL
-      item.href = `Resume.html?tab=${tab}`;
-    });
   });
 }
 
@@ -466,7 +436,7 @@ function renderPortfolioCards(projects, filter) {
   const filtered = filter === 'all' ? projects : projects.filter(p => p.category === filter);
 
   if (filtered.length === 0) {
-    grid.innerHTML = '<p style="grid-column: 1 / -1; text-align: center; color: var(--color-text-muted); font-style: italic;">No projects in this category yet.</p>';
+    grid.innerHTML = '<p class="portfolio-empty">No projects in this category yet.</p>';
     return;
   }
 
@@ -553,7 +523,8 @@ async function initPortfolio() {
 document.addEventListener('DOMContentLoaded', () => {
   initTheme();
   loadNavigation();
-  initTabs();
+  loadFooter();
+  initTimelineFilter();
   initModals();
   initPortfolio();
 });

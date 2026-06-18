@@ -1,34 +1,104 @@
-<!-- Hopefully I'll continue updating this as time goes by -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script>document.documentElement.setAttribute('data-theme', localStorage.getItem('theme') || 'dark');</script>
-    <title>Nadav Moskow | Nadav's Resume</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" type ="image/png" href="/NM1.png">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+  <script>document.documentElement.setAttribute('data-theme', localStorage.getItem('theme') || 'dark');</script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nadav Moskow | Application Administrator &amp; Systems Builder</title>
+  <meta name="description" content="Nadav Moskow — Application Administrator at Foxit Software. I build the automations and business systems that quietly run companies.">
+  <link rel="shortcut icon" type="image/png" href="/NM1.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.31.0/dist/tabler-icons.min.css">
+  <link rel="stylesheet" href="styles.css">
 </head>
-    
+
 <body>
+<a class="skip-link" href="#main">Skip to content</a>
 <div id="nav-placeholder"></div>
-<div id="welcome-section" class="intro">
-<div id="homepage-text">
-  <h1>Hi, I&apos;m Nadav!</h1>
-  <p>I'm an Application Administrator currently working at <a href="https://www.foxit.com" target="_blank" rel="noopener noreferrer">Foxit Software</a>.</p>
-  <p>Experienced Application Administrator and IT professional with advanced AI integration expertise. Early adopter of AI technologies, including ChatGPT, Copilot, Claude, and Google AI Studio, consistently leveraging these tools to streamline workflows, automate processes, and drive innovation across business systems.</p>
-  <p>Proven track record in managing enterprise applications, data analysis, and cross-functional collaboration with demonstrated cost savings and process improvements.</p>
-  <p>You can read <a href="Resume.html">my resume</a> or find out more about me by visiting the <a href="about.html">about me page</a>.</p>
-  <p>This website is intentionally a work in progress, I created it to work on some of my skills, there will be more to come in time.</p>
-  <p>If you'd like to get in touch, don't hesitate to <a href="contact.html">contact me</a>.</p>
-</div>
-</div>
+
+<main id="main">
+  <div class="wrap">
+
+    <!-- Hero -->
+    <section class="hero">
+      <p class="eyebrow"><i class="ti ti-building" aria-hidden="true"></i> Application Administrator &middot; Foxit Software</p>
+      <h1 class="hero-title">I build the automations and systems that <span class="em">quietly run companies.</span></h1>
+      <p class="hero-lede">
+        I'm Nadav Moskow — an Application Administrator who turns messy manual work into reliable
+        systems. I sit between the technical and business teams, building Power Platform automations,
+        owning enterprise apps like NetSuite and Microsoft 365, and bringing AI into the everyday
+        workflows people actually use.
+      </p>
+      <div class="hero-cta">
+        <a href="resume.html" class="btn btn-primary"><i class="ti ti-timeline-event" aria-hidden="true"></i> View resume</a>
+        <a href="/Nadav Moskow - Resume.pdf" class="btn btn-ghost" target="_blank" rel="noopener noreferrer" download><i class="ti ti-download" aria-hidden="true"></i> Download PDF</a>
+      </div>
+    </section>
+
+    <!-- Stat strip -->
+    <section class="stat-strip" aria-label="Key results">
+      <div class="stat">
+        <span class="stat-num">$100k+</span>
+        <span class="stat-label">annual savings delivered through licence optimisation</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">1000+</span>
+        <span class="stat-label">employees migrated to NetSuite ERP</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">80+</span>
+        <span class="stat-label">privacy requests automated every month</span>
+      </div>
+    </section>
+
+    <!-- What I do -->
+    <section class="what-i-do">
+      <div class="section-head">
+        <p class="section-label">What I do</p>
+        <h2>A few things I'm good at</h2>
+        <p>Four overlapping disciplines that, together, keep the lights on and the busywork down.</p>
+      </div>
+      <div class="do-grid">
+        <article class="do-card">
+          <span class="do-icon"><i class="ti ti-settings-automation" aria-hidden="true"></i></span>
+          <h3>Process Automation</h3>
+          <p>Power Automate flows that handle onboarding, offboarding and privacy requests end to end.</p>
+        </article>
+        <article class="do-card">
+          <span class="do-icon"><i class="ti ti-stack-2" aria-hidden="true"></i></span>
+          <h3>Business Systems</h3>
+          <p>Administering NetSuite, Microsoft 365 and a stack of SaaS tools so they work as one.</p>
+        </article>
+        <article class="do-card">
+          <span class="do-icon"><i class="ti ti-sparkles" aria-hidden="true"></i></span>
+          <h3>AI Integration</h3>
+          <p>An early adopter of ChatGPT, Copilot and Claude — woven into real, day-to-day workflows.</p>
+        </article>
+        <article class="do-card">
+          <span class="do-icon"><i class="ti ti-chart-dots" aria-hidden="true"></i></span>
+          <h3>Data &amp; Analysis</h3>
+          <p>SQL, Power BI and Looker Studio to turn raw system data into decisions people can act on.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Closing CTA -->
+    <section class="cta-band">
+      <h2>Let's see where I could help.</h2>
+      <p>Take a walk through my experience on the timeline, or browse the things I've actually built.</p>
+      <div class="hero-cta">
+        <a href="resume.html" class="btn btn-primary">View the resume</a>
+        <a href="portfolio.html" class="btn btn-ghost">Browse the portfolio</a>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<div id="footer-placeholder"></div>
 
 <script src="script.js" charset="utf-8"></script>
-
-<footer>
-  <p> Created by Nadav Moskow <a href="https://www.linkedin.com/in/nadav-moskow" target="_blank" rel="noopener noreferrer" id="linkedin-link"><img src="https://cdn.worldvectorlogo.com/logos/linkedin-icon-2.svg" id="linkedin"></a></p>
-</footer>
 </body>
 </html>

@@ -17,3 +17,8 @@
   from = "/projects.html"
   to = "/portfolio.html"
   status = 301
+
+[[redirects]]
+  from = "/Resume.html"
+  to = "/resume.html"
+  status = 301
