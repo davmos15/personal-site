@@ -723,9 +723,6 @@ main { flex: 1 0 auto; }
    Resume — sub-sections (skills / education / achievements)
    ========================================================= */
 .resume-section { padding: clamp(40px, 7vw, 64px) 0 0; }
-.resume-section:last-child {
-  padding-bottom: clamp(48px, 8vw, 72px);
-}
 .resume-section > h2 {
   font-size: clamp(1.6rem, 3.5vw, 2.2rem);
   margin: 0 0 0.5em;

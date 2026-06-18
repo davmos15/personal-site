@@ -24,8 +24,8 @@
     <!-- Page header -->
     <header class="page-head">
       <p class="section-label">Resume</p>
-      <h1>A timeline of the work.</h1>
-      <p>Roles I've held and things I've built, newest first. Tap any card for the full detail.</p>
+      <h1>A timeline of my work.</h1>
+      <p>Roles I've held, newest first. Tap any card for the full detail.</p>
       <div class="hero-cta">
         <a href="/Nadav Moskow - Resume.pdf" class="btn btn-primary" target="_blank" rel="noopener noreferrer" download aria-label="Download resume as PDF">
           <i class="ti ti-download" aria-hidden="true"></i> Download PDF
@@ -35,13 +35,16 @@
     </header>
 
     <!-- Filter pills -->
-    <div class="filter-pills" role="group" aria-label="Filter timeline">
+    <div class="filter-pills" role="group" aria-label="Filter resume">
       <button class="pill active" data-filter="all" aria-pressed="true">All</button>
       <button class="pill" data-filter="experience" aria-pressed="false">Experience</button>
+      <button class="pill" data-filter="skills" aria-pressed="false">Skills</button>
+      <button class="pill" data-filter="education" aria-pressed="false">Education</button>
+      <button class="pill" data-filter="achievements" aria-pressed="false">Achievements</button>
     </div>
 
     <!-- Timeline -->
-    <ol class="timeline" id="timeline" aria-label="Career timeline">
+    <ol class="timeline" id="timeline" aria-label="Career timeline" data-section="experience">
 
       <li class="timeline-item is-current" data-type="experience">
         <span class="timeline-node" aria-hidden="true"></span>
@@ -113,7 +116,7 @@
     </ol>
 
     <!-- Skills -->
-    <section class="resume-section">
+    <section class="resume-section" data-section="skills">
       <p class="section-label">Toolkit</p>
       <h2>Skills</h2>
       <div class="card-grid">
@@ -151,7 +154,7 @@
     </section>
 
     <!-- Education -->
-    <section class="resume-section">
+    <section class="resume-section" data-section="education">
       <p class="section-label">Background</p>
       <h2>Education</h2>
       <div class="card-grid cols-2">
@@ -170,7 +173,7 @@
     </section>
 
     <!-- Achievements -->
-    <section class="resume-section">
+    <section class="resume-section" data-section="achievements">
       <p class="section-label">Beyond work</p>
       <h2>Achievements</h2>
       <div class="card-grid">

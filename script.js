@@ -114,18 +114,25 @@ function setFooterYear() {
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 }
 
-/* ===== Resume Timeline Filter ===== */
+/* ===== Resume Section Filter ===== */
 function initTimelineFilter() {
   const pills = document.querySelectorAll('.filter-pills .pill');
-  const items = document.querySelectorAll('#timeline .timeline-item');
-  if (pills.length === 0 || items.length === 0) return;
+  const sections = document.querySelectorAll('[data-section]');
+  if (pills.length === 0 || sections.length === 0) return;
 
   const applyFilter = (filter) => {
-    items.forEach(item => {
-      const show = filter === 'all' || item.getAttribute('data-type') === filter;
-      item.classList.toggle('is-hidden', !show);
+    let lastVisible = null;
+    sections.forEach(section => {
+      const show = filter === 'all' || section.getAttribute('data-section') === filter;
+      section.style.display = show ? '' : 'none';
+      section.style.marginBottom = '';
+      if (show) lastVisible = section;
     });
+    if (lastVisible) lastVisible.style.marginBottom = 'clamp(48px, 8vw, 72px)';
   };
+
+  const initialPill = document.querySelector('.filter-pills .pill.active');
+  if (initialPill) applyFilter(initialPill.getAttribute('data-filter'));
 
   pills.forEach(pill => {
     pill.addEventListener('click', () => {
