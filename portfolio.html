@@ -1,44 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script>document.documentElement.setAttribute('data-theme', localStorage.getItem('theme') || 'dark');</script>
-    <title>Portfolio | Nadav's Resume</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" type="image/png" href="/NM1.png">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+  <script>document.documentElement.setAttribute('data-theme', localStorage.getItem('theme') || 'dark');</script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio | Nadav Moskow</title>
+  <meta name="description" content="Projects and automations built by Nadav Moskow, with public repositories pulled live from GitHub.">
+  <link rel="shortcut icon" type="image/png" href="/NM1.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.31.0/dist/tabler-icons.min.css">
+  <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
+<a class="skip-link" href="#main">Skip to content</a>
 <div id="nav-placeholder"></div>
 
-<div id="portfolio-page">
-  <h1>My Portfolio</h1>
+<main id="main">
+  <div class="wrap" id="portfolio-page">
 
-  <!-- Tab Navigation -->
-  <nav class="tab-container" role="tablist" aria-label="Portfolio categories">
-    <button class="tab-btn active" role="tab" aria-selected="true" data-tab="all">All</button>
-    <button class="tab-btn" role="tab" aria-selected="false" data-tab="android">Android</button>
-    <button class="tab-btn" role="tab" aria-selected="false" data-tab="fun">Fun</button>
-    <button class="tab-btn" role="tab" aria-selected="false" data-tab="garmin">Garmin</button>
-    <button class="tab-btn" role="tab" aria-selected="false" data-tab="it-infrastructure">IT / Infrastructure</button>
-    <button class="tab-btn" role="tab" aria-selected="false" data-tab="microsoft-suite">Microsoft Suite</button>
-    <button class="tab-btn" role="tab" aria-selected="false" data-tab="web">Web Apps</button>
-  </nav>
+    <header class="page-head">
+      <p class="section-label">Portfolio</p>
+      <h1>Things I've built.</h1>
+      <p>Workplace automations and personal projects. The public repositories below are pulled live from GitHub, so this stays current on its own.</p>
+    </header>
 
-  <!-- Card grid (populated by JavaScript) -->
-  <div id="portfolio-grid" class="card-grid">
-    <p id="portfolio-loading">Loading projects...</p>
+    <!-- Filter pills -->
+    <nav class="tab-container" role="tablist" aria-label="Portfolio categories">
+      <button class="tab-btn active" role="tab" aria-selected="true" data-tab="all">All</button>
+      <button class="tab-btn" role="tab" aria-selected="false" data-tab="android">Android</button>
+      <button class="tab-btn" role="tab" aria-selected="false" data-tab="fun">Fun</button>
+      <button class="tab-btn" role="tab" aria-selected="false" data-tab="garmin">Garmin</button>
+      <button class="tab-btn" role="tab" aria-selected="false" data-tab="it-infrastructure">IT / Infrastructure</button>
+      <button class="tab-btn" role="tab" aria-selected="false" data-tab="microsoft-suite">Microsoft Suite</button>
+      <button class="tab-btn" role="tab" aria-selected="false" data-tab="web">Web Apps</button>
+    </nav>
+
+    <!-- Card grid (populated by JavaScript) -->
+    <div id="portfolio-grid" class="card-grid">
+      <p id="portfolio-loading">Loading projects...</p>
+    </div>
+
   </div>
-</div>
+</main>
 
-<hr>
+<div id="footer-placeholder"></div>
 
 <script src="script.js" charset="utf-8"></script>
-
-<footer>
-  <p> Created by Nadav Moskow <a href="https://www.linkedin.com/in/nadav-moskow" target="_blank" rel="noopener noreferrer" id="linkedin-link"><img src="https://cdn.worldvectorlogo.com/logos/linkedin-icon-2.svg" id="linkedin"></a></p>
-</footer>
 </body>
 </html>

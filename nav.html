@@ -1,23 +1,27 @@
-<div id="top" class="topnav">
-    <nav id="nav">
-        <ul id='navbar'>
-            <li><a href="index.html" id="logo-link"><img src="NM1.png" alt="Logo" id="logo"></a></li>
-            <li><a href="index.html">Home</a></li>
-            <li>
-              <div class="dropdown">
-                <a class="dropbtn" id="resumebutton" href="Resume.html">My Resume</a>
-                <div class="dropdown-content">
-                  <a class="dropitem" href="Resume.html" data-tab="experience">Experience</a>
-                  <a class="dropitem" href="Resume.html" data-tab="skills">Skills</a>
-                  <a class="dropitem" href="Resume.html" data-tab="education">Education</a>
-                  <a class="dropitem" href="Resume.html" data-tab="achievements">Achievements</a>
-                </div>
-              </div>
-            </li>
-            <li><a href="portfolio.html">Portfolio</a></li>
-            <li><a href="about.html">About Me</a></li>
-            <li><a href="contact.html">Contact</a></li>
-            <li><button id="theme-toggle" aria-label="Toggle dark/light mode"><span id="theme-icon"></span></button></li>
-        </ul>
-    </nav>
-</div>
+<header class="site-header">
+  <nav class="nav" aria-label="Primary">
+    <a href="index.html" class="nav-brand" aria-label="Nadav Moskow — home">
+      <img src="NM1.png" alt="" class="nav-logo">
+      <span class="nav-brand-text">Nadav Moskow</span>
+    </a>
+
+    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-menu">
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+    </button>
+
+    <ul class="nav-menu" id="nav-menu">
+      <li><a href="index.html" data-page="index">Home</a></li>
+      <li><a href="resume.html" data-page="resume">Resume</a></li>
+      <li><a href="portfolio.html" data-page="portfolio">Portfolio</a></li>
+      <li><a href="about.html" data-page="about">About</a></li>
+      <li><a href="contact.html" data-page="contact">Contact</a></li>
+      <li class="nav-theme-item">
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark and light mode">
+          <span id="theme-icon" aria-hidden="true">&#9728;</span>
+        </button>
+      </li>
+    </ul>
+  </nav>
+</header>
