@@ -275,7 +275,9 @@ const REPO_NAME_OVERRIDES = {
   'traffic-light-timer': 'Traffic Light Timer',
   'dr-pay-checker': 'Doctor Pay Checker',
   'family-event-manager': 'Family Event Manager',
-  'personal-site': 'This Website'
+  'personal-site': 'This Website',
+  'afl-stats': 'AFL Stats',
+  'mlb-fantasy-draft': 'MLB Fantasy Draft'
 };
 
 const REPO_CATEGORIES = {
