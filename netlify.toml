@@ -18,7 +18,23 @@
   to = "/portfolio.html"
   status = 301
 
+# Former standalone pages are now homepage sections
+[[redirects]]
+  from = "/resume.html"
+  to = "/#resume"
+  status = 301
+
 [[redirects]]
   from = "/Resume.html"
-  to = "/resume.html"
+  to = "/#resume"
+  status = 301
+
+[[redirects]]
+  from = "/about.html"
+  to = "/#about"
+  status = 301
+
+[[redirects]]
+  from = "/contact.html"
+  to = "/#contact"
   status = 301

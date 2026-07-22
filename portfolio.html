@@ -4,49 +4,90 @@
   <script>document.documentElement.setAttribute('data-theme', localStorage.getItem('theme') || 'dark');</script>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portfolio | Nadav Moskow</title>
-  <meta name="description" content="Projects and automations built by Nadav Moskow, with public repositories pulled live from GitHub.">
-  <link rel="shortcut icon" type="image/png" href="/NM1.png">
+  <title>Projects | Nadav Moskow</title>
+  <meta name="description" content="Everything Nadav Moskow has built, in one place — automations, systems and apps, drawn from client work and public GitHub repositories.">
+  <link rel="shortcut icon" type="image/png" href="/logo-nm.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.31.0/dist/tabler-icons.min.css">
   <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
-<div id="nav-placeholder"></div>
+
+<!-- ===== NAV ===== -->
+<header class="site-header">
+  <nav class="nav" aria-label="Primary">
+    <a href="index.html" class="nav-brand" aria-label="Nadav Moskow — home">
+      <span class="nav-logo-chip"><img src="logo-nm.png" alt="NM logo"></span>
+      <span class="nav-brand-text">
+        <span class="nav-brand-name">Nadav Moskow</span>
+        <span class="nav-brand-sub">intelligence automation</span>
+      </span>
+    </a>
+
+    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-menu">
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+    </button>
+
+    <ul class="nav-menu" id="nav-menu">
+      <li><a href="index.html">&larr; Back home</a></li>
+      <li><a href="index.html#resume">Resume</a></li>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#contact" class="nav-cta">Get in touch</a></li>
+      <li class="nav-theme-item">
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark and light mode">
+          <span id="theme-icon" aria-hidden="true">☀</span>
+        </button>
+      </li>
+    </ul>
+  </nav>
+</header>
 
 <main id="main">
-  <div class="wrap" id="portfolio-page">
+  <div class="container" id="portfolio-page">
 
     <header class="page-head">
-      <p class="section-label">Portfolio</p>
-      <h1>Things I've built.</h1>
-      <p>Workplace automations and personal projects. The public repositories below are pulled live from GitHub, so this stays current on its own.</p>
+      <p class="hero-eyebrow">Project archive</p>
+      <h1>Everything I've built, in one place.</h1>
+      <p>A running list of the automations, systems and apps I've shipped, drawn from client work and my public GitHub repositories. The public repos below are pulled live from GitHub, so this stays current on its own.</p>
     </header>
 
     <!-- Filter pills -->
-    <nav class="tab-container" role="tablist" aria-label="Portfolio categories">
-      <button class="tab-btn active" role="tab" aria-selected="true" data-tab="all">All</button>
-      <button class="tab-btn" role="tab" aria-selected="false" data-tab="android">Android</button>
-      <button class="tab-btn" role="tab" aria-selected="false" data-tab="fun">Fun</button>
-      <button class="tab-btn" role="tab" aria-selected="false" data-tab="garmin">Garmin</button>
-      <button class="tab-btn" role="tab" aria-selected="false" data-tab="it-infrastructure">IT / Infrastructure</button>
-      <button class="tab-btn" role="tab" aria-selected="false" data-tab="microsoft-suite">Microsoft Suite</button>
-      <button class="tab-btn" role="tab" aria-selected="false" data-tab="web">Web Apps</button>
+    <nav class="filter-pills" role="tablist" aria-label="Project categories">
+      <button class="pill active" role="tab" aria-selected="true" data-tab="all">All</button>
+      <button class="pill" role="tab" aria-selected="false" data-tab="android">Android</button>
+      <button class="pill" role="tab" aria-selected="false" data-tab="fun">Fun</button>
+      <button class="pill" role="tab" aria-selected="false" data-tab="garmin">Garmin</button>
+      <button class="pill" role="tab" aria-selected="false" data-tab="it-infrastructure">IT / Infrastructure</button>
+      <button class="pill" role="tab" aria-selected="false" data-tab="microsoft-suite">Microsoft Suite</button>
+      <button class="pill" role="tab" aria-selected="false" data-tab="web">Web Apps</button>
     </nav>
 
     <!-- Card grid (populated by JavaScript) -->
-    <div id="portfolio-grid" class="card-grid">
-      <p id="portfolio-loading">Loading projects...</p>
+    <div id="portfolio-grid" class="projects-grid">
+      <p id="portfolio-loading">Loading projects…</p>
     </div>
 
   </div>
 </main>
 
-<div id="footer-placeholder"></div>
+<!-- ===== FOOTER ===== -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <p class="footer-name"><a href="index.html" style="color:inherit;">&larr; Nadav Moskow</a></p>
+    <div class="footer-links">
+      <a href="https://www.linkedin.com/in/nadav-moskow" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      <a href="mailto:moskownadav@gmail.com">Email</a>
+      <a href="https://github.com/davmos15" target="_blank" rel="noopener noreferrer">GitHub</a>
+      <span class="footer-copy">&copy; <span id="footer-year"></span> · built to run quietly</span>
+    </div>
+  </div>
+</footer>
 
 <script src="script.js" charset="utf-8"></script>
 </body>

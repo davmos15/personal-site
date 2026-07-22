@@ -16,7 +16,6 @@ function toggleTheme() {
 function updateThemeIcon(theme) {
   const icon = document.getElementById('theme-icon');
   if (icon) {
-    // Plain Unicode glyph so it never renders blank if a webfont is slow.
     // Show sun in dark mode (click to go light), moon in light mode (click to go dark).
     icon.textContent = theme === 'dark' ? '☀' : '☾';
   }
@@ -66,47 +65,12 @@ function initHamburger() {
   });
 }
 
-// Wire up everything inside the nav once it is present in the DOM
-function wireNav() {
+function initNav() {
   const toggleBtn = document.getElementById('theme-toggle');
-  if (toggleBtn) {
-    toggleBtn.addEventListener('click', toggleTheme);
-  }
+  if (toggleBtn) toggleBtn.addEventListener('click', toggleTheme);
   updateThemeIcon(document.documentElement.getAttribute('data-theme') || 'dark');
   highlightActivePage();
   initHamburger();
-}
-
-function loadNavigation() {
-  const placeholder = document.getElementById('nav-placeholder');
-  // If the placeholder is present and empty, inject the nav partial (static hosting).
-  if (placeholder && placeholder.children.length === 0) {
-    fetch('nav.html')
-      .then(response => response.text())
-      .then(data => {
-        placeholder.innerHTML = data;
-        wireNav();
-      })
-      .catch(error => console.error('Error loading navigation:', error));
-  } else {
-    // Nav already injected (e.g. server-side include) — just wire it up.
-    wireNav();
-  }
-}
-
-function loadFooter() {
-  const placeholder = document.getElementById('footer-placeholder');
-  if (!placeholder) {
-    setFooterYear();
-    return;
-  }
-  fetch('footer.html')
-    .then(response => response.text())
-    .then(data => {
-      placeholder.innerHTML = data;
-      setFooterYear();
-    })
-    .catch(error => console.error('Error loading footer:', error));
 }
 
 function setFooterYear() {
@@ -114,145 +78,85 @@ function setFooterYear() {
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 }
 
-/* ===== Resume Section Filter ===== */
-function initTimelineFilter() {
-  const pills = document.querySelectorAll('.filter-pills .pill');
-  const sections = document.querySelectorAll('[data-section]');
-  if (pills.length === 0 || sections.length === 0) return;
+/* ===== Interactive demo (drag-to-reveal) ===== */
+function initDemo() {
+  const stage = document.getElementById('demo-stage');
+  const auto = document.getElementById('demo-auto');
+  const handle = document.getElementById('demo-handle');
+  const hEl = document.getElementById('stat-hours');
+  const mEl = document.getElementById('stat-money');
+  const rEl = document.getElementById('stat-requests');
+  if (!stage || !auto || !handle) return;
 
-  const applyFilter = (filter) => {
-    let lastVisible = null;
-    sections.forEach(section => {
-      const show = filter === 'all' || section.getAttribute('data-section') === filter;
-      section.style.display = show ? '' : 'none';
-      section.style.marginBottom = '';
-      if (show) lastVisible = section;
-    });
-    if (lastVisible) lastVisible.style.marginBottom = 'clamp(48px, 8vw, 72px)';
+  let pct = 50;      // handle position 0..100 (left = more automated)
+  let raf = null;
+  let dragging = false;
+
+  const updateStats = (t) => {
+    const h = Math.round(40 * t);
+    const m = Math.round(100 * t);
+    const rq = Math.round(80 * t);
+    if (hEl) hEl.textContent = h;
+    if (mEl) mEl.textContent = '$' + m + 'k';
+    if (rEl) rEl.textContent = rq + (t >= 0.985 ? '+' : '');
   };
 
-  const initialPill = document.querySelector('.filter-pills .pill.active');
-  if (initialPill) applyFilter(initialPill.getAttribute('data-filter'));
+  const applyWipe = () => {
+    auto.style.clipPath = 'inset(0 0 0 ' + pct + '%)';
+    handle.style.left = pct + '%';
+    updateStats(1 - pct / 100);
+  };
 
-  pills.forEach(pill => {
-    pill.addEventListener('click', () => {
-      pills.forEach(p => {
-        p.classList.remove('active');
-        p.setAttribute('aria-pressed', 'false');
-      });
-      pill.classList.add('active');
-      pill.setAttribute('aria-pressed', 'true');
-      applyFilter(pill.getAttribute('data-filter'));
-    });
+  const setFromX = (clientX) => {
+    const r = stage.getBoundingClientRect();
+    pct = Math.max(0, Math.min(100, ((clientX - r.left) / r.width) * 100));
+    if (raf) cancelAnimationFrame(raf);
+    raf = requestAnimationFrame(applyWipe);
+  };
+
+  stage.addEventListener('pointerdown', (e) => {
+    dragging = true;
+    setFromX(e.clientX);
+    try { stage.setPointerCapture(e.pointerId); } catch (x) { /* ignore */ }
   });
+  stage.addEventListener('pointermove', (e) => { if (dragging) setFromX(e.clientX); });
+  const stop = () => { dragging = false; };
+  stage.addEventListener('pointerup', stop);
+  stage.addEventListener('pointercancel', stop);
+  stage.addEventListener('pointerleave', stop);
+
+  applyWipe();
 }
 
-/* ===== Modal Functionality ===== */
-function initModals() {
-  const modalOverlay = document.getElementById('modal-overlay');
-  const modalTitle = document.getElementById('modal-title');
-  const modalSubtitle = document.getElementById('modal-subtitle');
-  const modalDates = document.getElementById('modal-dates');
-  const modalBody = document.getElementById('modal-body');
-  const modalClose = document.querySelector('.modal-close');
+/* ===== Resume accordion ===== */
+function initRoles() {
+  const roles = Array.from(document.querySelectorAll('#roles [data-role]'));
+  if (roles.length === 0) return;
 
-  if (!modalOverlay) return;
+  roles.forEach((role) => {
+    const head = role.querySelector('.role-head');
+    if (!head) return;
+    head.setAttribute('tabindex', '0');
+    head.setAttribute('role', 'button');
+    head.setAttribute('aria-expanded', role.classList.contains('is-open') ? 'true' : 'false');
 
-  let triggerElement = null;
-
-  // Get all clickable cards
-  const cards = document.querySelectorAll('[data-modal]');
-
-  cards.forEach(card => {
-    const openModal = () => {
-      const templateId = card.getAttribute('data-modal');
-      const template = document.getElementById(templateId);
-
-      if (template) {
-        const content = template.content.cloneNode(true);
-        const modalData = content.querySelector('.modal-data');
-
-        if (modalData) {
-          modalTitle.textContent = modalData.getAttribute('data-title') || '';
-          modalSubtitle.textContent = modalData.getAttribute('data-subtitle') || '';
-          modalDates.textContent = modalData.getAttribute('data-dates') || '';
-
-          // Hide subtitle/dates if empty
-          modalSubtitle.style.display = modalData.getAttribute('data-subtitle') ? 'block' : 'none';
-          modalDates.style.display = modalData.getAttribute('data-dates') ? 'block' : 'none';
-
-          // Clone the inner content
-          modalBody.innerHTML = '';
-          Array.from(modalData.children).forEach(child => {
-            modalBody.appendChild(child.cloneNode(true));
-          });
-        }
-
-        triggerElement = card;
-        modalOverlay.classList.add('active');
-        modalOverlay.setAttribute('aria-hidden', 'false');
-        document.body.style.overflow = 'hidden';
-        modalClose.focus();
+    const toggle = () => {
+      const willOpen = !role.classList.contains('is-open');
+      roles.forEach((r) => {
+        r.classList.remove('is-open');
+        const h = r.querySelector('.role-head');
+        if (h) h.setAttribute('aria-expanded', 'false');
+      });
+      if (willOpen) {
+        role.classList.add('is-open');
+        head.setAttribute('aria-expanded', 'true');
       }
     };
 
-    card.addEventListener('click', openModal);
-    card.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        openModal();
-      }
+    head.addEventListener('click', toggle);
+    head.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); }
     });
-  });
-
-  // Close modal and return focus
-  function closeModal() {
-    modalOverlay.classList.remove('active');
-    modalOverlay.setAttribute('aria-hidden', 'true');
-    document.body.style.overflow = '';
-    if (triggerElement) {
-      triggerElement.focus();
-      triggerElement = null;
-    }
-  }
-
-  modalClose.addEventListener('click', closeModal);
-
-  modalOverlay.addEventListener('click', (e) => {
-    if (e.target === modalOverlay) {
-      closeModal();
-    }
-  });
-
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && modalOverlay.classList.contains('active')) {
-      closeModal();
-    }
-  });
-
-  // Focus trap inside modal
-  modalOverlay.addEventListener('keydown', (e) => {
-    if (e.key !== 'Tab' || !modalOverlay.classList.contains('active')) return;
-
-    const focusableElements = modalOverlay.querySelectorAll(
-      'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
-    );
-    if (focusableElements.length === 0) return;
-
-    const firstFocusable = focusableElements[0];
-    const lastFocusable = focusableElements[focusableElements.length - 1];
-
-    if (e.shiftKey) {
-      if (document.activeElement === firstFocusable) {
-        e.preventDefault();
-        lastFocusable.focus();
-      }
-    } else {
-      if (document.activeElement === lastFocusable) {
-        e.preventDefault();
-        firstFocusable.focus();
-      }
-    }
   });
 }
 
@@ -291,6 +195,15 @@ const REPO_CATEGORIES = {
   'dr-pay-checker': 'web',
   'family-event-manager': 'web',
   'personal-site': 'web'
+};
+
+const CATEGORY_LABELS = {
+  'android': 'Android',
+  'fun': 'Fun',
+  'garmin': 'Garmin',
+  'it-infrastructure': 'IT / Infrastructure',
+  'microsoft-suite': 'Microsoft Suite',
+  'web': 'Web App'
 };
 
 // Repos that should not show a live link even if they have a homepage
@@ -371,7 +284,6 @@ const PORTFOLIO_PROJECTS = [
 
 /* ===== GitHub API ===== */
 async function fetchGitHubRepos() {
-  // Check cache first
   const cached = localStorage.getItem(GITHUB_CACHE_KEY);
   if (cached) {
     try {
@@ -391,7 +303,6 @@ async function fetchGitHubRepos() {
     if (!response.ok) throw new Error(`GitHub API: ${response.status}`);
     const repos = await response.json();
 
-    // Cache the result
     localStorage.setItem(GITHUB_CACHE_KEY, JSON.stringify({
       data: repos,
       timestamp: Date.now()
@@ -410,7 +321,6 @@ async function fetchGitHubRepos() {
 async function loadPortfolioProjects() {
   const githubRepos = await fetchGitHubRepos();
 
-  // Convert GitHub repos to project objects
   const githubProjects = githubRepos
     .filter(repo => !EXCLUDED_REPOS.includes(repo.name))
     .map(repo => ({
@@ -425,7 +335,6 @@ async function loadPortfolioProjects() {
       updatedAt: repo.updated_at
     }));
 
-  // Merge: manual entries take priority (matched by id)
   const manualIds = new Set(PORTFOLIO_PROJECTS.map(p => p.id));
   const merged = [
     ...PORTFOLIO_PROJECTS,
@@ -448,24 +357,24 @@ function renderPortfolioCards(projects, filter) {
   }
 
   grid.innerHTML = filtered.map(project => {
-    const toolsHtml = project.tools.map(t => `<span class="tool-tag">${escapeHtml(t)}</span>`).join('');
+    const toolsHtml = (project.tools || []).map(t => `<span class="tag">${escapeHtml(t)}</span>`).join('');
+    const catLabel = CATEGORY_LABELS[project.category] || 'Project';
 
     const linksHtml = [];
     if (project.repoUrl) {
-      linksHtml.push(`<a href="${escapeHtml(project.repoUrl)}" target="_blank" rel="noopener noreferrer" class="card-link" onclick="event.stopPropagation()">Code</a>`);
+      linksHtml.push(`<a href="${escapeHtml(project.repoUrl)}" target="_blank" rel="noopener noreferrer" class="project-link" onclick="event.stopPropagation()"><i class="ti ti-brand-github" aria-hidden="true"></i> Code</a>`);
     }
     if (project.liveUrl) {
-      linksHtml.push(`<a href="${escapeHtml(project.liveUrl)}" target="_blank" rel="noopener noreferrer" class="card-link card-link-primary" onclick="event.stopPropagation()">Live Site</a>`);
+      linksHtml.push(`<a href="${escapeHtml(project.liveUrl)}" target="_blank" rel="noopener noreferrer" class="project-link primary" onclick="event.stopPropagation()">Live site</a>`);
     }
 
-    const hasLinks = linksHtml.length > 0;
-
     return `
-      <article class="portfolio-card" data-project-id="${escapeHtml(project.id)}">
-        <h3 class="card-title">${escapeHtml(project.name)}</h3>
-        <p class="card-summary">${escapeHtml(project.description)}</p>
-        <div class="card-tools">${toolsHtml}</div>
-        ${hasLinks ? `<div class="card-links">${linksHtml.join('')}</div>` : ''}
+      <article class="project-card" data-project-id="${escapeHtml(project.id)}">
+        <div class="project-top"><span class="project-cat">${escapeHtml(catLabel)}</span></div>
+        <h3>${escapeHtml(project.name)}</h3>
+        <p>${escapeHtml(project.description)}</p>
+        ${toolsHtml ? `<div class="tag-row">${toolsHtml}</div>` : ''}
+        ${linksHtml.length ? `<div class="project-links">${linksHtml.join('')}</div>` : ''}
       </article>
     `;
   }).join('');
@@ -479,7 +388,7 @@ function escapeHtml(str) {
 
 /* ===== Portfolio Tab Filtering ===== */
 function initPortfolioTabs(projects) {
-  const tabButtons = document.querySelectorAll('#portfolio-page .tab-btn');
+  const tabButtons = document.querySelectorAll('#portfolio-page .pill');
   if (tabButtons.length === 0) return;
 
   tabButtons.forEach(button => {
@@ -496,7 +405,6 @@ function initPortfolioTabs(projects) {
       renderPortfolioCards(projects, category);
     });
 
-    // Keyboard navigation for portfolio tabs
     button.addEventListener('keydown', (e) => {
       const tabs = Array.from(tabButtons);
       const currentIndex = tabs.indexOf(button);
@@ -529,9 +437,9 @@ async function initPortfolio() {
 /* ===== Initialize on page load ===== */
 document.addEventListener('DOMContentLoaded', () => {
   initTheme();
-  loadNavigation();
-  loadFooter();
-  initTimelineFilter();
-  initModals();
+  initNav();
+  setFooterYear();
+  initDemo();
+  initRoles();
   initPortfolio();
 });

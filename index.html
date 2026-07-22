@@ -5,98 +5,459 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Nadav Moskow | Intelligence Automation Specialist</title>
-  <meta name="description" content="Nadav Moskow — Intelligence Automation Specialist at South Eastern Melbourne Primary Health Network. I build the automations and systems that quietly run organisations.">
-  <link rel="shortcut icon" type="image/png" href="/NM1.png">
+  <meta name="description" content="Nadav Moskow — Intelligence Automation Specialist. I turn manual chaos into reliable, AI-powered automations: the quiet machinery that keeps organisations running.">
+  <link rel="shortcut icon" type="image/png" href="/logo-nm.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.31.0/dist/tabler-icons.min.css">
   <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
-<div id="nav-placeholder"></div>
+
+<!-- ===== NAV ===== -->
+<header class="site-header">
+  <nav class="nav" aria-label="Primary">
+    <a href="#top" class="nav-brand" aria-label="Nadav Moskow — home">
+      <span class="nav-logo-chip"><img src="logo-nm.png" alt="NM logo"></span>
+      <span class="nav-brand-text">
+        <span class="nav-brand-name">Nadav Moskow</span>
+        <span class="nav-brand-sub">intelligence automation</span>
+      </span>
+    </a>
+
+    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-menu">
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+    </button>
+
+    <ul class="nav-menu" id="nav-menu">
+      <li><a href="#work" data-page="index">Work</a></li>
+      <li><a href="portfolio.html" data-page="portfolio">Projects</a></li>
+      <li><a href="#resume">Resume</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact" class="nav-cta">Get in touch</a></li>
+      <li class="nav-theme-item">
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark and light mode">
+          <span id="theme-icon" aria-hidden="true">☀</span>
+        </button>
+      </li>
+    </ul>
+  </nav>
+</header>
+
+<span id="top"></span>
 
 <main id="main">
-  <div class="wrap">
 
-    <!-- Hero -->
-    <section class="hero">
-      <p class="eyebrow"><i class="ti ti-building" aria-hidden="true"></i> Intelligence Automation Specialist &middot; South Eastern Melbourne Primary Health Network</p>
-      <h1 class="hero-title">I build the automations and systems that <span class="em">quietly run organisations.</span></h1>
-      <p class="hero-lede">
-        I'm Nadav Moskow — an Intelligence Automation Specialist who turns messy manual work into reliable
-        systems. I sit between the technical and business teams, designing AI-powered workflows and
-        automations that bring real efficiency to the people who use them every day.
-      </p>
-      <div class="hero-cta">
-        <a href="resume.html" class="btn btn-primary"><i class="ti ti-timeline-event" aria-hidden="true"></i> View my resume</a>
-        <a href="/Nadav Moskow - Resume.pdf" class="btn btn-ghost" target="_blank" rel="noopener noreferrer" download><i class="ti ti-download" aria-hidden="true"></i> Download PDF</a>
-      </div>
-    </section>
+  <!-- ===== HERO ===== -->
+  <header class="hero container">
+    <p class="hero-eyebrow">Intelligence Automation Specialist</p>
+    <h1 class="hero-title">I turn manual chaos into systems that <span class="em">run themselves.</span></h1>
+    <p class="hero-lede">
+      I'm Nadav Moskow. I sit between the technical and business teams and rebuild the messy, manual
+      work nobody enjoys into reliable, AI-powered automations: the quiet machinery that keeps
+      organisations running. Four-plus years of it at Foxit Software delivered $150k+ in annual savings.
+    </p>
+    <div class="btn-row">
+      <a href="#work" class="btn btn-primary">Explore my work <span aria-hidden="true">&rarr;</span></a>
+      <a href="#resume" class="btn btn-ghost">View resume</a>
+    </div>
+  </header>
 
-    <!-- Stat strip -->
-    <section class="stat-strip" aria-label="Key results">
-      <div class="stat">
-        <span class="stat-num">$100k+</span>
-        <span class="stat-label">annual savings delivered through licence optimisation</span>
+  <!-- ===== INTERACTIVE CENTERPIECE ===== -->
+  <section class="container" aria-label="Interactive demo">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow dim">// live demo</p>
+        <h2 class="section-title" style="font-size:clamp(1.3rem,2.6vw,1.9rem);">See what I actually do.</h2>
       </div>
-      <div class="stat">
-        <span class="stat-num">1000+</span>
-        <span class="stat-label">employees migrated to NetSuite ERP</span>
-      </div>
-      <div class="stat">
-        <span class="stat-num">80+</span>
-        <span class="stat-label">privacy requests automated every month</span>
-      </div>
-    </section>
+    </div>
 
-    <!-- What I do -->
-    <section class="what-i-do">
-      <div class="section-head">
-        <p class="section-label">What I do</p>
-        <h2>A few things I'm good at</h2>
-        <p>Four overlapping disciplines that, together, keep the lights on and the busywork down.</p>
-      </div>
-      <div class="do-grid">
-        <article class="do-card">
-          <span class="do-icon"><i class="ti ti-settings-automation" aria-hidden="true"></i></span>
-          <h3>Process Automation</h3>
-          <p>Power Automate flows that handle onboarding, offboarding and privacy requests end to end.</p>
-        </article>
-        <article class="do-card">
-          <span class="do-icon"><i class="ti ti-stack-2" aria-hidden="true"></i></span>
-          <h3>Business Systems</h3>
-          <p>Administering NetSuite, Microsoft 365 and a stack of SaaS tools so they work as one.</p>
-        </article>
-        <article class="do-card">
-          <span class="do-icon"><i class="ti ti-sparkles" aria-hidden="true"></i></span>
-          <h3>AI Integration</h3>
-          <p>An early adopter of ChatGPT, Copilot and Claude — woven into real, day-to-day workflows.</p>
-        </article>
-        <article class="do-card">
-          <span class="do-icon"><i class="ti ti-chart-dots" aria-hidden="true"></i></span>
-          <h3>Data &amp; Analysis</h3>
-          <p>SQL, Power BI and Looker Studio to turn raw system data into decisions people can act on.</p>
-        </article>
-      </div>
-    </section>
+    <div class="demo-panel">
+      <div class="demo-stage" id="demo-stage">
+        <!-- MANUAL layer (under) -->
+        <div class="demo-layer demo-manual">
+          <div class="demo-grid"></div>
+          <span class="demo-tag demo-tag-manual"><span class="dot"></span>Before · manual</span>
+          <div class="demo-chip" style="--r:-8deg; top:30%; left:9%; animation-duration:5.5s;">Onboarding form <span>· 4h</span></div>
+          <div class="demo-chip" style="--r:7deg; top:54%; left:15%; animation-duration:6.2s; animation-delay:.6s;">Privacy request <span>· ?</span></div>
+          <div class="demo-chip" style="--r:5deg; top:18%; left:30%; animation-duration:5s; animation-delay:.3s;">Licence audit</div>
+          <div class="demo-chip" style="--r:-6deg; top:66%; left:33%; animation-duration:6.8s; animation-delay:.9s;">Offboarding <span>· 3h</span></div>
+          <div class="demo-chip" style="--r:10deg; top:40%; left:22%; animation-duration:5.8s; animation-delay:1.2s;">Invoice sync</div>
+          <span class="demo-note demo-note-manual">tickets piling up · copy-paste · reminders</span>
+        </div>
 
-    <!-- Closing CTA -->
-    <section class="cta-band">
-      <h2>Let's see where I could help.</h2>
-      <p>Take a walk through my experience on the timeline, or browse the things I've actually built.</p>
-      <div class="hero-cta">
-        <a href="resume.html" class="btn btn-primary">View my resume</a>
-        <a href="portfolio.html" class="btn btn-ghost">Browse my portfolio</a>
-      </div>
-    </section>
+        <!-- AUTOMATED layer (clipped, over) -->
+        <div class="demo-layer demo-auto" id="demo-auto">
+          <div class="demo-auto-fill"></div>
+          <div class="demo-grid"></div>
+          <span class="demo-tag demo-tag-auto"><span class="dot"></span>After · automated</span>
+          <div class="demo-pipe">
+            <div class="demo-pipe-inner">
+              <div class="demo-rail"></div>
+              <div class="demo-rail-track">
+                <span class="demo-pulse"></span>
+                <span class="demo-pulse delay"></span>
+              </div>
+              <div class="demo-nodes">
+                <div class="demo-node"><span class="glyph">&#9889;</span><span class="label">Trigger</span></div>
+                <div class="demo-node"><span class="glyph">&#10003;</span><span class="label">Validate</span></div>
+                <div class="demo-node"><span class="glyph">&#8644;</span><span class="label">Route</span></div>
+                <div class="demo-node done"><span class="glyph">&#10003;</span><span class="label">Done</span></div>
+              </div>
+            </div>
+          </div>
+          <span class="demo-note demo-note-auto">runs 24/7 · zero touches · logged</span>
+        </div>
 
-  </div>
+        <!-- HANDLE -->
+        <div class="demo-handle" id="demo-handle">
+          <div class="demo-grip">&#8596;</div>
+          <div class="demo-grip-caption">drag</div>
+        </div>
+      </div>
+
+      <!-- LIVE STATS -->
+      <div class="demo-stats">
+        <div class="demo-stat">
+          <div class="demo-stat-value"><span id="stat-hours">20</span>h</div>
+          <p class="demo-stat-label">reclaimed / week</p>
+        </div>
+        <div class="demo-stat">
+          <div class="demo-stat-value" id="stat-money">$50k</div>
+          <p class="demo-stat-label">saved / year</p>
+        </div>
+        <div class="demo-stat">
+          <div class="demo-stat-value" id="stat-requests">40</div>
+          <p class="demo-stat-label">requests auto-handled / mo</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== WHAT I DO ===== -->
+  <section id="work" class="section container">
+    <p class="eyebrow">// disciplines</p>
+    <h2 class="section-title">Four things that keep the lights on.</h2>
+    <p class="section-lead">Overlapping disciplines that, together, kill the busywork.</p>
+    <div class="card-auto-grid">
+      <article class="disc-card">
+        <span class="disc-num">01</span>
+        <div class="disc-glyph">&#9881;</div>
+        <h3>Process Automation</h3>
+        <p>Power Automate flows that run onboarding, offboarding and privacy requests end to end.</p>
+      </article>
+      <article class="disc-card">
+        <span class="disc-num">02</span>
+        <div class="disc-glyph">&#9638;</div>
+        <h3>Business Systems</h3>
+        <p>NetSuite, Microsoft 365 and a stack of SaaS tools, administered so they work as one.</p>
+      </article>
+      <article class="disc-card">
+        <span class="disc-num">03</span>
+        <div class="disc-glyph">&#10024;</div>
+        <h3>AI Integration</h3>
+        <p>Early adopter of ChatGPT, Copilot and Claude, woven into real day-to-day workflows.</p>
+      </article>
+      <article class="disc-card">
+        <span class="disc-num">04</span>
+        <div class="disc-glyph">&#8776;</div>
+        <h3>Data &amp; Analysis</h3>
+        <p>SQL, Power BI and Looker Studio turning raw system data into decisions people act on.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- ===== WORK AT A GLANCE ===== -->
+  <section class="section container">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow">// selected builds</p>
+        <h2 class="section-title">Things I've actually shipped.</h2>
+      </div>
+      <a href="portfolio.html" class="btn btn-sm btn-accent-outline">View all projects <span aria-hidden="true">&rarr;</span></a>
+    </div>
+    <div class="work-grid">
+      <article class="work-card">
+        <div class="work-top"><span class="work-num">01</span><span class="metric-pill">80+/mo</span></div>
+        <h3>GDPR / CCPA Request Engine</h3>
+        <p>Power Automate flow that handles external data-deletion requests automatically, every month.</p>
+        <div class="tag-row"><span class="tag">Power Automate</span><span class="tag">M365</span></div>
+      </article>
+      <article class="work-card">
+        <div class="work-top"><span class="work-num">02</span><span class="metric-pill">$100k/yr</span></div>
+        <h3>Licence Optimisation Audit</h3>
+        <p>Mapped 10+ SaaS products to real usage, cutting redundant licences org-wide.</p>
+        <div class="tag-row"><span class="tag">SQL</span><span class="tag">Data</span></div>
+      </article>
+      <article class="work-card">
+        <div class="work-top"><span class="work-num">03</span><span class="metric-pill">1000+</span></div>
+        <h3>NetSuite ERP Migration</h3>
+        <p>Migrated 1000+ employees and millions of invoices and records to Oracle NetSuite.</p>
+        <div class="tag-row"><span class="tag">NetSuite</span><span class="tag">ERP</span></div>
+      </article>
+      <article class="work-card">
+        <div class="work-top"><span class="work-num">04</span><span class="metric-pill">Power Apps</span></div>
+        <h3>Onboarding App + Org Chart</h3>
+        <p>New-hire onboarding plus a searchable, interactive organisation chart.</p>
+        <div class="tag-row"><span class="tag">Power Apps</span><span class="tag">Azure AD</span></div>
+      </article>
+      <article class="work-card">
+        <div class="work-top"><span class="work-num">05</span><span class="metric-pill">Personal</span></div>
+        <h3>Running Analysis App</h3>
+        <p>A personal app that crunches my marathon training and race data.</p>
+        <div class="tag-row"><span class="tag">Built w/ Claude</span></div>
+      </article>
+      <article class="work-card">
+        <div class="work-top"><span class="work-num">06</span><span class="metric-pill">This site</span></div>
+        <h3>Personal Site, Reimagined</h3>
+        <p>The site you're on, designed and built from scratch.</p>
+        <div class="tag-row"><span class="tag">HTML</span><span class="tag">CSS</span></div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ===== RESUME ===== -->
+  <section id="resume" class="section container narrow">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow">// career</p>
+        <h2 class="section-title">The timeline at a glance.</h2>
+      </div>
+      <a href="/Nadav Moskow - Resume.pdf" target="_blank" rel="noopener noreferrer" download class="btn btn-sm btn-primary">Download PDF <span aria-hidden="true">&darr;</span></a>
+    </div>
+
+    <div class="roles" id="roles">
+      <div class="role is-current is-open" data-role>
+        <div class="role-head">
+          <div class="role-headline">
+            <div class="role-meta">
+              <span class="role-dates">Apr 2026 – Current</span>
+              <span class="badge-current">Current</span>
+            </div>
+            <h3>Intelligence Automation Specialist</h3>
+            <p class="role-org">South Eastern Melbourne Primary Health Network</p>
+          </div>
+          <span class="role-chevron" aria-hidden="true">&darr;</span>
+        </div>
+        <div class="role-detail"><div class="role-detail-inner">
+          <p class="role-summary">Designing and implementing AI-powered automation across a government-funded primary health network that directs funding for primary healthcare across south-eastern Melbourne.</p>
+          <ul class="role-points">
+            <li>Automated eSign agreement routing and CRM update flows across 500+ clinics, wiring together the CRM, SharePoint and DocuSign.</li>
+            <li>Built Copilot Studio agents — an internal resource agent and an executive CRM assistant.</li>
+            <li>Built a Power Platform flow assistant that creates and analyses flows.</li>
+          </ul>
+        </div></div>
+      </div>
+
+      <div class="role" data-role>
+        <div class="role-head">
+          <div class="role-headline">
+            <div class="role-meta"><span class="role-dates">Oct 2022 – Apr 2026</span></div>
+            <h3>Application Administrator</h3>
+            <p class="role-org">Foxit Software Inc.</p>
+          </div>
+          <span class="role-chevron" aria-hidden="true">&darr;</span>
+        </div>
+        <div class="role-detail"><div class="role-detail-inner">
+          <p class="role-summary">Owned internal workflows, automations, business applications and M365 across the GBITS (CIO) department, working cross-functionally and across borders.</p>
+          <ul class="role-points">
+            <li>Licence optimisation across 10+ SaaS products, identifying redundancies worth $100k+ in annual savings.</li>
+            <li>Built a Power Automate flow for external GDPR &amp; CCA data requests, handling 80+ unique requests every month.</li>
+            <li>Led the NetSuite migration for 1000+ employees and millions of invoices and records.</li>
+            <li>Integrated HiBob to Entra ID and NetSuite, ending account discrepancies and improving user management.</li>
+          </ul>
+        </div></div>
+      </div>
+
+      <div class="role" data-role>
+        <div class="role-head">
+          <div class="role-headline">
+            <div class="role-meta"><span class="role-dates">Jun 2021 – Sep 2022</span></div>
+            <h3>IT/IS-Sec Program Manager</h3>
+            <p class="role-org">Foxit Software Inc.</p>
+          </div>
+          <span class="role-chevron" aria-hidden="true">&darr;</span>
+        </div>
+        <div class="role-detail"><div class="role-detail-inner">
+          <p class="role-summary">Reported to the CIO, built process automation and ran global helpdesk operations.</p>
+          <ul class="role-points">
+            <li>Automated comprehensive onboarding/offboarding workflows for all global staff via Power Automate and Freshdesk.</li>
+            <li>Created the company's first comprehensive org chart using Visio and Azure AD data integration.</li>
+            <li>Assisted the worldwide rollout of Microsoft Endpoint (Intune).</li>
+          </ul>
+        </div></div>
+      </div>
+
+      <div class="role" data-role>
+        <div class="role-head">
+          <div class="role-headline">
+            <div class="role-meta"><span class="role-dates">Jul 2019 – May 2021</span></div>
+            <h3>Digital Marketing Manager (SEM &amp; Data Analytics)</h3>
+            <p class="role-org">Digital Autopilot</p>
+          </div>
+          <span class="role-chevron" aria-hidden="true">&darr;</span>
+        </div>
+        <div class="role-detail"><div class="role-detail-inner">
+          <p class="role-summary">Account manager and Google Ads specialist driving measurable client growth.</p>
+          <ul class="role-points">
+            <li>Grew one repair business from ~30 to 200+ leads per month.</li>
+            <li>Doubled a beauty and wellness spa's leads and revenue.</li>
+            <li>Built client reporting in Looker Studio, Power BI and AgencyAnalytics.</li>
+          </ul>
+        </div></div>
+      </div>
+
+      <div class="role" data-role>
+        <div class="role-head">
+          <div class="role-headline">
+            <div class="role-meta"><span class="role-dates">Mar 2017 – Jun 2019</span></div>
+            <h3>Digital Marketing Manager</h3>
+            <p class="role-org">Digital Advocates Group</p>
+          </div>
+          <span class="role-chevron" aria-hidden="true">&darr;</span>
+        </div>
+        <div class="role-detail"><div class="role-detail-inner">
+          <p class="role-summary">Managed client accounts and trained the team on Google Ads best practice.</p>
+          <ul class="role-points">
+            <li>Built a semi-automated change-tracking system in Google Sheets.</li>
+            <li>Created a geo-targeting suburb database (Melbourne suburbs by distance from the CBD) for campaign precision.</li>
+          </ul>
+        </div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SKILLS & ACHIEVEMENTS ===== -->
+  <section id="skills" class="section container">
+    <p class="eyebrow">// capabilities</p>
+    <h2 class="section-title">Skills &amp; achievements.</h2>
+    <p class="section-lead">The toolkit I reach for, and the numbers it has produced.</p>
+    <div class="stack">
+      <div class="achieve-grid">
+        <div class="achieve-card"><div class="achieve-stat">$100k+</div><p>Saved annually through licence optimisation</p></div>
+        <div class="achieve-card"><div class="achieve-stat">1000+</div><p>Employees migrated to NetSuite ERP</p></div>
+        <div class="achieve-card"><div class="achieve-stat">80+/mo</div><p>Privacy requests handled automatically</p></div>
+        <div class="achieve-card"><div class="achieve-stat">3x</div><p>Cricket grand finals won, in three appearances</p></div>
+      </div>
+      <div class="skillgroup-grid">
+        <div class="skillgroup">
+          <p class="skillgroup-label">Microsoft &amp; Automation</p>
+          <div class="chip-row"><span class="chip">Power Automate</span><span class="chip">Power Apps</span><span class="chip">Power BI</span><span class="chip">Azure AD</span><span class="chip">Intune</span><span class="chip">SharePoint</span></div>
+        </div>
+        <div class="skillgroup">
+          <p class="skillgroup-label">AI &amp; Data</p>
+          <div class="chip-row"><span class="chip">ChatGPT</span><span class="chip">Copilot</span><span class="chip">Claude</span><span class="chip">SQL</span><span class="chip">Python</span><span class="chip">R</span><span class="chip">Looker Studio</span></div>
+        </div>
+        <div class="skillgroup">
+          <p class="skillgroup-label">Business Systems</p>
+          <div class="chip-row"><span class="chip">NetSuite ERP</span><span class="chip">Microsoft 365</span><span class="chip">SaaS Admin</span><span class="chip">HiBob</span></div>
+        </div>
+        <div class="skillgroup">
+          <p class="skillgroup-label">Development &amp; Web</p>
+          <div class="chip-row"><span class="chip">PowerShell</span><span class="chip">HTML</span><span class="chip">CSS</span><span class="chip">WordPress</span><span class="chip">Shopify</span></div>
+        </div>
+        <div class="skillgroup">
+          <p class="skillgroup-label">Project &amp; Ops</p>
+          <div class="chip-row"><span class="chip">Asana</span><span class="chip">Miro</span><span class="chip">Monday.com</span><span class="chip">GDPR / CCPA</span><span class="chip">Helpdesk Ops</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== EDUCATION ===== -->
+  <section id="education" class="section container narrow">
+    <p class="eyebrow">// background</p>
+    <h2 class="section-title">Education.</h2>
+    <div class="edu-grid" style="margin-top:26px;">
+      <article class="edu-card">
+        <h3>Bachelor of Commerce</h3>
+        <p class="edu-inst">Deakin University</p>
+        <p class="edu-dates">2015 – 2019</p>
+        <p class="edu-detail">Major: Economics</p>
+      </article>
+      <article class="edu-card">
+        <h3>VCE</h3>
+        <p class="edu-inst">Yeshivah College</p>
+        <p class="edu-dates">2013</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- ===== ABOUT ===== -->
+  <section id="about" class="section container narrow">
+    <p class="eyebrow">// off the clock</p>
+    <h2 class="section-title" style="margin-bottom:18px;">When I'm not automating things.</h2>
+    <p class="about-body">Outside work I'm usually mid-run (come find me at the next marathon), on a cricket pitch (three grand finals, three wins) or buried in some obscure stat about movies, running or sport. Automation-focused professional by day, relentless optimiser by nature.</p>
+    <blockquote class="pull-quote">
+      "If you ask me a question and I don't know the answer, I'll tell you I don't know. But I bet you what, I know how to find the answer, and I will find it."
+      <cite>Chris Gardner, The Pursuit of Happyness</cite>
+    </blockquote>
+  </section>
+
+  <!-- ===== CONTACT ===== -->
+  <section id="contact" class="section container" style="padding-bottom:clamp(40px,6vw,64px);">
+    <div class="contact-card">
+      <div class="contact-gridlines"></div>
+      <div class="contact-inner">
+        <div class="contact-copy">
+          <h2>Let's automate something.</h2>
+          <p>Got a process that should run itself? I'm always up for a chat, or a run.</p>
+          <div class="contact-actions">
+            <a href="mailto:moskownadav@gmail.com" class="btn btn-primary"><i class="ti ti-mail" aria-hidden="true"></i> Email me</a>
+            <a href="https://www.linkedin.com/in/nadav-moskow" target="_blank" rel="noopener noreferrer" class="btn btn-ghost">LinkedIn <span aria-hidden="true">&#8599;</span></a>
+            <a href="https://github.com/davmos15" target="_blank" rel="noopener noreferrer" class="btn btn-ghost">GitHub <span aria-hidden="true">&#8599;</span></a>
+            <a href="/Nadav Moskow - Resume.pdf" target="_blank" rel="noopener noreferrer" download class="btn btn-ghost">Resume <span aria-hidden="true">&darr;</span></a>
+          </div>
+        </div>
+
+        <form class="contact-form" name="contact" method="post" data-netlify="true" netlify-honeypot="bot-field">
+          <input type="hidden" name="form-name" value="contact" />
+          <p class="hp-field" aria-hidden="true">
+            <label>Don't fill this out if you're human: <input name="bot-field" tabindex="-1" autocomplete="off" /></label>
+          </p>
+          <div class="field">
+            <label for="name">Name</label>
+            <input id="name" type="text" name="Name" placeholder="Your name" required
+                   oninvalid="this.setCustomValidity('Please enter your name')" oninput="setCustomValidity('')" />
+          </div>
+          <div class="field">
+            <label for="email">Email</label>
+            <input id="email" type="email" name="Email" placeholder="you@example.com" required
+                   oninvalid="this.setCustomValidity('Please enter a valid email address')" oninput="setCustomValidity('')" />
+          </div>
+          <div class="field">
+            <label for="phone">Phone <span style="font-weight:400;color:var(--muted-3)">(optional)</span></label>
+            <input id="phone" type="tel" name="Phone Number" placeholder="Your phone number" />
+          </div>
+          <div class="field">
+            <label for="message">Message</label>
+            <textarea id="message" name="Message" placeholder="Type your message" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary"><i class="ti ti-send" aria-hidden="true"></i> Send message</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
 </main>
 
-<div id="footer-placeholder"></div>
+<!-- ===== FOOTER ===== -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <p class="footer-name">Nadav Moskow</p>
+    <div class="footer-links">
+      <a href="https://www.linkedin.com/in/nadav-moskow" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      <a href="mailto:moskownadav@gmail.com">Email</a>
+      <a href="https://github.com/davmos15" target="_blank" rel="noopener noreferrer">GitHub</a>
+      <span class="footer-copy">&copy; <span id="footer-year"></span> · built to run quietly</span>
+    </div>
+  </div>
+</footer>
 
 <script src="script.js" charset="utf-8"></script>
 </body>
